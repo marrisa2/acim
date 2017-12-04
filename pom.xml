@@ -76,6 +76,10 @@
     <jetty-path.version>/</jetty-path.version>
     <!--其他变量 end-->
 
+    <!--文件读取包-->
+    <poi-ooxml.version>3.17</poi-ooxml.version>
+    <xmlbeans.version>2.6.0</xmlbeans.version>
+
     <!--这个配置是为了解决下面两个警告-->
     <!--Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!-->
     <!--File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!-->
@@ -398,12 +402,33 @@
       <version>${thymeleaf.version}</version>
     </dependency>
 
+
+    <!-- excell 文件读取-->
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>${poi-ooxml.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml-schemas</artifactId>
+      <version>${poi-ooxml.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>poi</groupId>
+      <artifactId>poi-scratchpad-2.5.1-final</artifactId>
+      <version>20040804</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.xmlbeans</groupId>
+      <artifactId>xmlbeans</artifactId>
+      <version>${xmlbeans.version}</version>
+    </dependency>
+
+
+
+
     <!--常用工具类-整理-end-->
-
-
-
-
-
   </dependencies>
   <!--架包依赖 end-->
 
@@ -546,11 +571,16 @@
 
       <!-- dependency插件 -->
 
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-plugins</artifactId>
-        <version>23</version>
-      </plugin></plugins>
+        <version>30</version>
+      </plugin>
+
+      </plugins>
+
+    
   </build>
   <!--设置项目编译级别等设置 end-->
 </project>

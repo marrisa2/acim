@@ -24,14 +24,14 @@ public class SysUserController {
 	@Resource
 	private SysUserService sysUserService;
 	
-	@RequestMapping("/showUserToJspById/{userId}")
+	@RequestMapping("/showUserToJspById.do/{userId}")
 	public String showUser(Model model, @PathVariable("userId") Long userId) {
 		SysUser user = this.sysUserService.getById(userId);
 		model.addAttribute("user", user);
 		return "showUser";
 	}
 	
-	@RequestMapping("/showUserToJSONById/{userId}")
+	@RequestMapping("/showUserToJSONById.do/{userId}")
 	@ResponseBody
 	public SysUser showUser(@PathVariable("userId") Long userId) {
 		SysUser user = sysUserService.getById(userId);
