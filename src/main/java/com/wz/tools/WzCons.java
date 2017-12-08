@@ -16,6 +16,8 @@ public class WzCons {
 	public static final String tableName = "sys_user";
 	public static final String miracles_text_adrres = "miracles_file/miracles_text.xlsx";
 
+	public static final String menu_address = "system/menu-head.xml"; // 系统菜单
+
 	public static final String sqlScriptUrl = "sql/initialization.sql";
 	// 奇迹课程正文地址 /miracles_file/miracles_text.xlsx
 	
