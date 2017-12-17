@@ -163,8 +163,8 @@ function setHeadMenu(className) {
         "\t\t</ul>\n" +
         "\n";
 
-    alert("strMenu");
-    alert(className);
+    //alert("strMenu");
+   // alert(className);
     $(strMenu).appendTo(className);
 
 

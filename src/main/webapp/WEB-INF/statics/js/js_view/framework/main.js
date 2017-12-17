@@ -1,7 +1,7 @@
 
 
 $(document).ready(function(){
-    alert("main");
+   // alert("main");
 
     setGlobalLink(true);
     setHeadMenu('.global_header');
