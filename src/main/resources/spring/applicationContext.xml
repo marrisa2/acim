@@ -28,5 +28,15 @@ http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
     <!-- 资料：http://www.cnblogs.com/-bumblebee-/archive/2012/03/23/2413366.html-->
     <context:annotation-config />
+    <bean id="configRealm" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+         <property name="locations">
+             <list>
+               <value>classpath:properties/application.properties</value>
+             </list>
+        </property>
+   </bean>
+     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+          <property name="properties" ref="configRealm"/>
+     </bean>
 
 </beans>

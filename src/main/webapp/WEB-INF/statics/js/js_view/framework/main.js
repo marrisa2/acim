@@ -1,12 +1,15 @@
 
 
 $(document).ready(function(){
+    alert("main");
 
-     globaLinkerRightFunction(); // 菜单头右边点击方法按钮
-     animateMenu(); // 圆形菜单按钮功能方法
-     globalClickFunction();// 横条菜单按钮方法
-	 setDivHeigth($(".wz_context"),$("#wz_context"));//设置菜单内容高度
-	 head_menu();// head_menu 触发方法
+    setGlobalLink(true);
+    setHeadMenu('.global_header');
+    globaLinkerRightFunction(); // 菜单头右边点击方法按钮
+    animateMenu(); // 圆形菜单按钮功能方法
+    globalClickFunction();// 横条菜单按钮方法
+    setDivHeigth($(".wz_context"),$("#wz_context"));//设置菜单内容高度
+    head_menu();// head_menu 触发方法
 
 	 
 });
@@ -26,6 +29,7 @@ function getAcim(bookNameId){
     //alert(isAll);
     var acim = {bookNameId:bookNameId,bookName:bookName,bookType:bookType,isAll:isAll,sheet_indexs:sheet_indexs};
 
+   // alert(acim);
     return acim;
 
 }
@@ -64,7 +68,7 @@ function globalClickFunction(){
  */
 function globaLinkerRightFunction(){
 
-    $(".global_linker_right").find("li").on('click',function(){
+    $(".global_linker").find("li").on('click',function(){
 
        // login_user  system_set   logout
         var  li_id_name = $(this).find("a").attr("id");

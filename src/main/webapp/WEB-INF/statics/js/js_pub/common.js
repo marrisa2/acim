@@ -3,7 +3,7 @@
    JSLoader.loadStyleSheet("src='../css/style.default.css' th:src='@{/css/style.default.css}'");
   /*  JSLoader.loadStyleSheet("../css/style.katniss.css");
 */   /* JSLoader.loadStyleSheet("../css/customer.css");*/
-    JSLoader.loadStyleSheet("src='../css/jquery-ui-1.10.3'  th:src='@{/css/jquery-ui-1.10.3}'");
+    JSLoader.loadStyleSheet("src='../css/jquery-ui-1.10.3'  th:src='/*[[@{/css/jquery-ui-1.10.3}']]*/");
     JSLoader.loadStyleSheet("src='../css/jquery.gritter.css' th:src='@{/css/jquery.gritter.css}' ");
     JSLoader.loadStyleSheet("src='' /js/ymPrompt/skin/qq/ymPrompt.css th:src='@{}'" );
     JSLoader.loadStyleSheet("/css/css_wz/miracles.css");

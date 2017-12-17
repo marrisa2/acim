@@ -1,5 +1,11 @@
 package com.wz.framework.interceptor;
 
+import com.wz.framework.pub.Servlet2Utils;
+import com.wz.framework.pub.SystemSession;
+import com.wz.framework.pub.UserSession;
+import com.wz.framework.pub.SessionListener;
+import com.wz.tools.DeviceUtils;
+import com.wz.tools.WzCons;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -7,7 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 拦截器资料：
@@ -34,6 +42,9 @@ public class SystemInitInterceptor implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object object, ModelAndView exception) throws Exception {
 		//如果该请求地址是不会被拦截器拦截的话，则在该请求执行完后会来执行这里
 		System.out.println("--------------------------------postHandle");
+
+
+
 	}
 	
 	@Override
@@ -71,7 +82,36 @@ public class SystemInitInterceptor implements HandlerInterceptor {
 		if (!flag) {
 			//拦截成功，请求地址不符合要求，这里进行不符合操作，比如跳转到某个错误页面
 			System.out.println("--------------------------------该请求地址：" + requestUrl + ",被拦截器拦截.");
+
+			UserSession userSession = (UserSession) request.getSession().getAttribute("UserSession");
+			Hashtable<String, UserSession> online = SessionListener.getUsersOnline();//获得用户在线列表
+
+
+			//当前session,在线用户列表不为null,并且当前在线用户没有当前session时，要注销当前session
+			if(userSession!=null&&online!=null){
+				flag=true;
+				//获得所有在线用户的key
+				Set<String> keys = online.keySet();
+				for (String key : keys) {
+					UserSession user = online.get(key);
+					if(user!=null&&user.getIds_user().equals(userSession.getIds_user())){
+						flag=false;
+						break;
+					}
+				}
+				//flag为true是，则要把当前seesion注销
+				if(flag){
+					Servlet2Utils.getSession().invalidate();
+
+				}
+				SystemSession.setUserSession(userSession);
+
+			}
+
+
 		}
+
+
 		
 		// 返回 true 则直接符合当前拦截器要求，无需拦截
 		return flag;

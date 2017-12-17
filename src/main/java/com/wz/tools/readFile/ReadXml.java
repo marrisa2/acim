@@ -54,21 +54,6 @@ public class ReadXml {
         }
         return null;
     }
-    
-    
-    public static List<Element> getElement(String title,String xml) throws Exception{
-    	 try {
-             SAXReader reader = new SAXReader();
-             Document doc = reader.read(xml);
-             List<Element> elementList = doc.selectNodes(title);
-             if (elementList.size() > 0) {
-                 return elementList;
-             }
-         } catch (DocumentException e) {
-             e.printStackTrace();
-             throw new Exception("解析XML内容出错：", e);
-         }
-         return null;
-    }
+
 
 }

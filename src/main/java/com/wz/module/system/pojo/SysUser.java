@@ -34,7 +34,7 @@ public class SysUser implements Serializable {
 	@Column(name = "sys_user_login_name", nullable = false)
 	private String sysUserLoginName;
 	
-	@Column(name = "sys_user_login_password", nullable = false)
+	@Column(name = "sys_user_login_password", nullable = true)
 	private String sysUserLoginPassword;
 	
 	@Column(name = "sys_user_is_delete", nullable = false)
@@ -44,14 +44,26 @@ public class SysUser implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date sysUserRegisterDatetime;
 	
-	@Column(name = "sys_user_email", nullable = false)
+	@Column(name = "sys_user_email", nullable = true)
 	private String sysUserEmail;
 	
-	@Column(name = "sys_user_mobile", nullable = false)
+	@Column(name = "sys_user_mobile", nullable = true)
 	private String sysUserMobile;
 
 	@Column(name = "sys_user_other", nullable = false)
 	private String sysUserOther;
+
+	@Column(name = "sys_register_kind",nullable = false)
+	private String sys_register_kind;  // 注册方式， 手机号，用户名， 微信，QQ， 微博
+
+
+	public String getSys_register_kind() {
+		return sys_register_kind;
+	}
+
+	public void setSys_register_kind(String sys_register_kind) {
+		this.sys_register_kind = sys_register_kind;
+	}
 
 	public String getSysUserOther() {
 		return sysUserOther;

@@ -1,7 +1,9 @@
 .global_linker{
+    position:absolute;;
     margin-top:0px;
     height:55px;
-    width:100%;
+    width:80%;
+    margin-right:10%;
     border-bottom:5px solid #fff;
     background-color:#0dc2e3;
     background-image:-webkit-linear-gradient(180deg, transparent 55%, #00bfe1 45%);
@@ -9,7 +11,7 @@
     background-image:-ms-linear-gradient(180deg, transparent 50%, #00bfe1 50%);
     background-image:linear-gradient(90deg, transparent 50%, #00bfe1 50%);
     background-size:30px 30px;
-    z-index:999;
+    z-index: 9999;
 }
 .menu{
     width:40%;
@@ -87,14 +89,16 @@
     text-shadow:0 1px 0 #1c71a1;
     text-decoration:none;
     background-color:#218bc7;
+
+
 }
 @font-face{
     font-family:'iconminia';
-    src:url('fonts/iconminia.eot');
-    src:url('fonts/iconminia.eot?#iefix') format('embedded-opentype'),
-    url('fonts/iconminia.svg#iconminia') format('svg'),
-    url('fonts/iconminia.woff') format('woff'),
-    url('fonts/iconminia.ttf') format('truetype');
+    src:url('../fonts/iconminia.eot');
+    src:url('../fonts/iconminia.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/iconminia.svg#iconminia') format('svg'),
+    url('../fonts/iconminia.woff') format('woff'),
+    url('../fonts/iconminia.ttf') format('truetype');
     font-weight:normal;
     font-style:normal;
 }

@@ -404,6 +404,8 @@
     </dependency>
 
 
+
+
     <!-- excell 文件读取-->
 
     <dependency>
@@ -475,6 +477,14 @@
     <groupId>org.apache.poi</groupId>
     <artifactId>poi-excelant</artifactId>
     <version>3.17</version>
+    </dependency>
+
+
+
+    <dependency>
+      <groupId>eu.bitwalker</groupId>
+      <artifactId>UserAgentUtils</artifactId>
+      <version>1.20</version>
     </dependency>
 
 

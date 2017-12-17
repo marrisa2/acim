@@ -74,6 +74,13 @@ public class SysUserController {
 		SysUser user = sysUserService.findBySysUserId(userId);
 		return user;
 	}
+
+	@RequestMapping("/headMenu")
+	@ResponseBody
+	public String  headMenu(){
+		StringBuffer menu  = new StringBuffer();
+		return menu.toString();
+	}
 	
 	
 }

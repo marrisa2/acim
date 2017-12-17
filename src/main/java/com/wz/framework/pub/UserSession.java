@@ -1,7 +1,7 @@
 package com.wz.framework.pub;
 
 public class UserSession {
-    private String ids_user;
+    private Long ids_user;
     private String name;
     private String data;
     private String time;
@@ -9,10 +9,20 @@ public class UserSession {
     private String loginSorce;
     private int logCount;
     private String curYear;
-    public String getIds_user() {
+    private String loginDate=null;//当前用户登陆的时间
+
+    public String getLoginDate() {
+        return loginDate;
+    }
+
+    public void setLoginDate(String loginDate) {
+        this.loginDate = loginDate;
+    }
+
+    public Long getIds_user() {
         return ids_user;
     }
-    public void setIds_user(String ids_user) {
+    public void setIds_user(Long ids_user) {
         this.ids_user = ids_user;
     }
     public String getName() {

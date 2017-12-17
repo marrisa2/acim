@@ -10,6 +10,9 @@ package com.wz.framework.instantiation;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.web.context.ServletContextAware;
+
+import javax.servlet.ServletContext;
 
 /**
  * 以静态变量保存Spring ApplicationContext, 可在任何代码任何地方任何时候中取出ApplicaitonContext.
@@ -17,9 +20,10 @@ import org.springframework.context.ApplicationContextAware;
  * @author calvin
  */
 
-public class SpringContextHolder implements ApplicationContextAware {
+public class SpringContextHolder implements ApplicationContextAware,ServletContextAware {
 
 	public static  ApplicationContext context = null;
+
 
 	/**
 	 * 实现ApplicationContextAware接口的context注入函数, 将其存入静态变量.
@@ -65,5 +69,9 @@ public class SpringContextHolder implements ApplicationContextAware {
 		}
 	}
 
-	
+
+	@Override
+	public void setServletContext(ServletContext servletContext) {
+
+	}
 }

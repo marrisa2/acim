@@ -1,14 +1,6 @@
 
-// window.open("manage_ISM/trade.html","_self")
 
-//alert($.trim($('#name').val()));
-
-
-//jQuery(document).ready(function() {
-	
-	// alert();
-
-
+//alert("loginON");
  $(window).ready(function() {
 	 $("#login").on("click",function(e){
 		 loginsubmit();
@@ -24,53 +16,7 @@
 
 
 	
-	 // $("#login").on("click",function(e){
-		  //alert();
-		  
-		 // loginsubmit();
-		  //alert();
-/*		  
-		  if($.trim($('#name').val()) === ''){
-		       // yssAlert("请输入用户名！",300,150);
-				//return false;
-			  jQuery.gritter.add({
-					title: '用户名不能为空',
-					text:  '请输入用户名!',
-			    class_name: 'growl-info',
-			    image: 'images/screen.png',
-			    position: 'center',
-					sticky: false,
-					time: 1000
- });      
-			}else if($.trim($("#password").val()) === ''){
-				//yssAlert("请输入密码！",300,150);
-		       // return false; 
-				 jQuery.gritter.add({
-						title: '密码不能为空',
-						text:  '请输入密码!',
-				    class_name: 'growl-info',
-				    image: 'images/screen.png',
-				    position: 'center',
-						sticky: false,
-						time: 1000
-    });      
-		    } 
 
-	  	//  $("#alert_password").modal("show");
-	  	var reValue = login2();
-	  	if(reValue==true){
-	  		
-	  		 loginsubmit();
-	  		 
-	  }*/
-	  	 
-		      
-	//	}); // end login
-		
-			
-//}); // end ready
-
-// alert();
 
 /**
  * 登录信息
