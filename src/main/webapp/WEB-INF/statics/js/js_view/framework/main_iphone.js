@@ -1,18 +1,21 @@
 
 var mainContextMenuIndex = "mainContextMenu_1";  // 主页内容菜单状态
+var footerMenuIndex = "shouye_footer";
 
 $(document).ready(function(){
 
     startSwiper(); //启动滑动条
     footerDiv();// 添加footer;
     searchDiv(); //头部搜菜单
-    //添加中间内容
+    //添加中间内容ddd
     mainContextMenuBar();
-    addEvent();// 添加事件
     setMainContextHeight();
-    mainContextMenuClick(); //ddd
+    footerMenuClick();
     progressBar();//进度条方法
+    addEvent();// 添加事件
+    alert("main");
 });
+
 
 
 
@@ -32,11 +35,11 @@ function startSwiper(){
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
-        }
-        // navigation: {
-        //     nextEl: '.swiper-button-next',
-        //     prevEl: '.swiper-button-prev',
-        // },
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
     });
 }
 
@@ -71,30 +74,42 @@ function addEvent(){
 
     $('.main_context_menuBar').find("li").on("click",function(){
         var idName = $(this).attr("id");
+        alert("main_context_menuBar");
         if(idName == null){
             return;
         }
         mainContextMenuIndex = idName;
+        alert("dd");
         mainContextMenuClick();
     });
 
-
-
-
     $(".footer").find("li").on('click',function(){
 
-         if(mainContextMenuIndex == "shouye_footer"){
+        var idName = $(this).attr("id");
+        if(idName == null){
+            return;
+        }
+        footerMenuIndex = idName;
+        footerMenuClick();
 
-         }else if(mainContextMenuIndex == "mutiMedia_footer"){
-
-         }else if(mainContextMenuIndex == "add_footer"){
-
-         }else if(mainContextMenuIndex == "information_footer"){
-
-         }else if(mainContextMenuIndex == "my_footer"){
-
-         }
     });
+}
+
+
+function footerMenuClick(){
+   // alert();
+    if(footerMenuIndex == "shouye_footer"){
+        mainContextMenuClick(); //首页菜单初始化
+    }else if(footerMenuIndex == "mutiMedia_footer"){
+
+    }else if(footerMenuIndex == "add_footer"){
+
+    }else if(footerMenuIndex == "information_footer"){
+
+    }else if(footerMenuIndex == "my_footer"){
+
+    }
+
 }
 
 
@@ -105,6 +120,8 @@ function mainContextMenuClick(){
     if(mainContextMenuIndex == "mainContextMenu_1"){
         createMiraclesList();
     }else if(mainContextMenuIndex == "mainContextMenu_2"){
+        alert("mainContextMenu_2");
+        $(".main_context_iphone").empty();
     }else if(mainContextMenuIndex == "mainContextMenu_3"){
     }else if(mainContextMenuIndex == "mainContextMenu_4"){
     }

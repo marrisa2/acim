@@ -39,7 +39,7 @@ public class Servlet2Utils {
             return "iphone/" +urlName ;
         }else{
             //WzCons.setsourceOfMachine("iphone");
-            return "pc/" + urlName;
+            return "iphone/" + urlName;
         }
 
     }
