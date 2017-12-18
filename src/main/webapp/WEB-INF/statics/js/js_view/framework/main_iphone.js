@@ -13,7 +13,7 @@ $(document).ready(function(){
     footerMenuClick();
     progressBar();//进度条方法
     addEvent();// 添加事件
-    alert("main");
+    //alert("main");
 });
 
 
@@ -79,7 +79,7 @@ function addEvent(){
             return;
         }
         mainContextMenuIndex = idName;
-        alert("dd");
+      //  alert("dd");
         mainContextMenuClick();
     });
 
