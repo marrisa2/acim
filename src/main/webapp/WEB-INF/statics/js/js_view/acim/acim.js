@@ -70,7 +70,7 @@ function  miracles(josnData){
 	
 	var catalog = josnData.目录;
 	insertCatalog(catalog);
-	insertContex(josnData)
+	insertContex(josnData);
 	//alert(josnData.length);
 }
 
@@ -140,9 +140,12 @@ function insertContex(josnData){
 	}); 
 	
 	contextHtml +="</div>";
-	//alert(contextHtml);
-    $("#context").empty();
-	$(contextHtml).appendTo("#context");
+	alert(contextHtml);
+    // $("#context").empty();
+	// $(contextHtml).appendTo("#context"); bookContextDiv
+
+    $(".bookContextDiv").empty();
+    $(contextHtml).appendTo(".bookContextDiv");
 	
 }
 

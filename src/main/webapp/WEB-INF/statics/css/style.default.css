@@ -85,7 +85,7 @@ body {
 body.notfound,
 body.signin {
     background: #e4e7ea;
-    background: url(../../statics/images_wz/main_background2.jpg)  no-repeat 100% center ;
+    /*background: url(../../statics/images_wz/main_background2.jpg)  no-repeat 100% center ;*/
 }
 
 input,select,textarea {
@@ -3714,14 +3714,15 @@ div.error label.error:before {
 
 
 .fixed {
-    background: #c9cccf;
+
+    background: #eee;
 }
 
 .fixed section {
     margin: auto;
-    max-width: 1050px;
+    max-width: 900px;
     position: relative;
-    background: #1D2939;
+    /*background: #1D2939;*/
 }
 
 .fixed .rightpanel {
@@ -4314,6 +4315,7 @@ div.error label.error:before {
         margin: 0 auto;
         width: 480px;
         padding: 20px;
+
     }
 
     .signinpanel form {

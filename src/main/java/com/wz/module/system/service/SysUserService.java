@@ -21,6 +21,10 @@ public interface SysUserService {
 	
 	
 	SysUser findBySysUserLoginName(String sysUserLoginName);
+
+	SysUser findBySysUserMobile(String sysUserMobile);
+
+	SysUser findBySysUserEmail(String sysUserEmail);
 	
 	//使用了 Distinct 关键字 和 or 关键字
 	List<SysUser> findDistinctSysUserBySysUserLoginNameOrSysUserId(String sysUserLoginName, Long sysUserId);

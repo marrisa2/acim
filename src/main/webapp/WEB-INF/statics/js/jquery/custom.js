@@ -1,5 +1,5 @@
 
-alert();
+// alert();
 jQuery(window).load(function() {
    
    // Page Preloader

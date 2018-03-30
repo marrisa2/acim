@@ -2,173 +2,16 @@
  *
  */
 
-function isLogin(){
+var loginUserObj = null;
 
+function  setLoginUserObj(userObj){
+    loginUserObj = userObj;
 }
 
-//alert("ddddd");
-/**
- * 登录信息头设置
- * @param isLogin
- * @returns {string}
- */
-function setGlobalLink(isLogin){
-    //alert("ddd");
-    var globalLink_login = '  <ul class="menu">\n' +
-        '            <li><a href="#"> </a></li>\n' +
-        '            <li><a id="system_set">消息</a></li>\n' +
-        '            <li>\n' +
-        '                <a> 获取VIP</a>\n' +
-        '            </li>\n' +
-        '            <Li><a id="login_user"> 仙子</a>\n' +
-        '                <ul>\n' +
-        '                    <li id="logout"><a>充值</a></li>\n' +
-        '                    <li><a>个人主页设置</a></li>\n' +
-        '                    <li><a>退出</a></li>\n' +
-        '                </ul>\n' +
-        '            </Li>\n' +
-        '        </ul>';
-
-    var globalLink_unLogin = '  <ul class="menu">\n' +
-        '            <li><a href="#"> </a></li>\n' +
-        '            <Li><a id="login_user"> 注册</a> </Li>\n'
-    '            <li><a id="system_set">登录</a></li>\n' +
-    '            <li><a id="system_set">微信登录</a></li>\n' +
-    '            <li><a id="system_set">QQ登录</a></li>\n' +
-    '            <li><a id="system_set">微博</a></li>\n' +
-    '        </ul>';
-
-    if(isLogin){
-       // alert(globalLink_login);
-        $(globalLink_login).appendTo('.global_linker');
-        return globalLink_login;
-    }else{
-        $(globalLink_unLogin).appendTo('.global_linker');
-        return globalLink_unLogin;
-    }
+function getLoginUserObj(){
+    return loginUserObj;
 }
 
-
-/**
- * 菜单头设置
- * @param idName
- */
-function setHeadMenu(className) {
-    /*var strMenu = '\t<div class="container">\n' +
-        '\t\t\t<div class="row">\n' +
-        '\t\t\t\t<div class="col-md-12">\n' +
-        '\t\t\t\t\t<nav class="navbar navbar-default navbar-mobile bootsnav">\n' +
-        '\t\t\t\t\t\t<div class="navbar-header">\n' +
-        '\t\t\t\t\t\t\t<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">\n' +
-        '\t\t\t\t\t\t\t\t<i class="fa fa-bars"></i>\n' +
-        '\t\t\t\t\t\t\t</button>\n' +
-        '\t\t\t\t\t\t</div>\n' +
-        '\t\t\t\t\t\t<div class="collapse navbar-collapse" id="navbar-menu">\n' +
-        '\t\t\t\t\t\t\t<ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">\t\t\t\t\t\t\t\t\n' +
-        '\t\t\t\t\t\t\t\t<li><a href="#">首页</a></li>\n' +
-        '\t\t\t\t\t\t\t\t<li class="dropdown">\n' +
-        '\t\t\t\t\t\t\t\t\t<a href="#" class="dropdown-toggle" data-toggle="dropdown">奇迹课程</a>\n' +
-        '\t\t\t\t\t\t\t\t\t<ul class="dropdown-menu">\t\t\t\t\t\t\t\t\t\t\n' +
-        '\t\t\t\t\t\t\t\t\t\t<li class="dropdown">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t<a href="#" class="dropdown-toggle" data-toggle="dropdown" >课程内容</a>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t<ul id="miracles"  class="dropdown-menu">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t<li><a  id=\'miracles_text\' isAll="true" bookName =\'miracles_text\' bookType=\'excel\'>正文</a></li>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t<li><a  id="miracles_bookwork" isAll ="true" bookName=\'miracles_bookwork\' bookType=\'excel\'>练习</a></li>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t<li><a  id=\'miracles_manualForTeachers\' isAll = "true" bookName="manualForTeachers" bookType=\'excel\'>教师指南</a></li>\t\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t</ul>\n' +
-        '\t\t\t\t\t\t\t\t\t\t</li>\n' +
-        '\t\t\t\t\t\t\t\t\t\t<li class="dropdown">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t<a href="#" class="dropdown-toggle" data-toggle="dropdown" >课程相关</a>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t<ul class="dropdown-menu">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t<li><a href="#">葛瑞</a></li>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t<li><a href="#">肯恩</a></li>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t<li><a href="#">小飞虫</a></li>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t<li><a href="#">了了</a></li>\t\t\t\t\t\t\t\t\t\t\t\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t</ul>\n' +
-        '\t\t\t\t\t\t\t\t\t\t</li>\n' +
-        '\t\t\t\t\t\t\t\t\t</ul>\n' +
-        '\t\t\t\t\t\t\t\t</li>\n' +
-        '\t\t\t\t\t\t\t\t<li class="dropdown">\n' +
-        '\t\t\t\t\t\t\t\t\t<a href="#" class="dropdown-toggle" data-toggle="dropdown">佛学</a>\n' +
-        '\t\t\t\t\t\t\t\t\t<ul  id="practices" class="dropdown-menu">\n' +
-        '\t\t\t\t\t\t\t\t\t\t<li><a href="#">一涅槃</a></li>\n' +
-        '\t\t\t\t\t\t\t\t\t\t<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">三大经</a>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t<ul class="dropdown-menu">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t<li><a href="#">华严经</a></li> \n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t<li><a href="#">法华经</a></li>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t\t<li><a href="#">楞严经</a></li>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t</ul>\n' +
-        '\t\t\t\t\t\t\t\t\t\t</li>\n' +
-        '\t\t\t\t\t\t\t\t\t\t<li class="dropdown">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t<a href="#" class="dropdown-toggle" data-toggle="dropdown">三大咒</a>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t<ul class="dropdown-menu">\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t<li><a href="#">楞严咒</a></li>  \n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t<li><a href="#">大悲咒</a></li>\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t\t<li><a href="#">尊胜咒</a></li>\t\t\t\t\t\t\t\t\t\t\n' +
-        '\t\t\t\t\t\t\t\t\t\t\t</ul>\n' +
-        '\t\t\t\t\t\t\t\t\t\t</li>\t\t\t\t\t\t\t\t\t\t\n' +
-        '\t\t\t\t\t\t\t\t\t</ul>\n' +
-        '\t\t\t\t\t\t\t\t</li>\n' +
-        '\t\t\t\t\t\t\t<li><a href="#">周易</a></li>\n' +
-        '\t\t\t\t\t\t\t<li><a href="#">心理学</a></li>\n' +
-        '\t\t\t\t\t\t\t<li><a href="#">视频音频</a></li>\n' +
-        '\t\t\t\t\t\t\t<li><a href="#">上传</a></li>\n' +
-        '\t\t\t\t\t\t\t</ul>\n' +
-        '\t\t\t\t\t\t</div>\n' +
-        '\t\t\t\t\t</nav>\n' +
-        '\t\t\t\t</div>\n' +
-        '\t\t\t</div>\n' +
-        '\t\t</div>';
-*/
-    var strMenu = "<ul class=\"nav-list\">\n" +
-        "\t\t\t<li><a href=\"#\">奇迹课程<span class=\"trig\"></span></a>\n" +
-        "\t\t\t\t<ul id=\"miracles\">\n" +
-        "\t\t\t\t\t<li><a id='miracles_text' isAll=\"true\" bookName='miracles_text' bookType='excel'>正文</a></li>\n" +
-        "\t\t\t\t\t<li><a id=\"miracles_bookwork\" isAll=\"true\" bookName='miracles_bookwork' bookType='excel'>练习</a></li>\n" +
-        "\t\t\t\t\t<li><a id='miracles_manualForTeachers' isAll=\"true\" bookName=\"manualForTeachers\" bookType='excel'>教师指南</a>\n" +
-        "\t\t\t\t\t</li>\n" +
-        "\n" +
-        "\t\t\t\t</ul>\n" +
-        "\t\t\t</li>\n" +
-        "\t\t\t<li><a href=\"#\">佛教<span class=\"trig\"></span></a>\n" +
-        "\t\t\t\t<ul id=\"practices\">\n" +
-        "\t\t\t\t\t<li><a href=\"#\">出境首页</a></li>\n" +
-        "\t\t\t\t\t<li><a href=\"#\">当地玩乐</a></li>\n" +
-        "\n" +
-        "\t\t\t\t</ul>\n" +
-        "\t\t\t</li>\n" +
-        "\t\t\t<li><a href=\"#\">心理学<span class=\"trig\"></span></a>\n" +
-        "\t\t\t\t<ul id=\"physical\">\n" +
-        "\t\t\t\t\t<li><a href=\"#\">国内长途</a></li>\n" +
-        "\t\t\t\t\t<li><a href=\"#\">周边跟团</a></li>\n" +
-        "\t\t\t\t\t<li><a href=\"#\">周边跟团</a></li>\n" +
-        "\n" +
-        "\t\t\t\t</ul>\n" +
-        "\t\t\t</li>\n" +
-        "\t\t\t<li><a href=\"#\">视频<span class=\"trig\"></span></a>\n" +
-        "\t\t\t\t<ul id=\"tv\">\n" +
-        "\t\t\t\t\t<li><a href=\"#\">出境首页1</a></li>\n" +
-        "\t\t\t\t\t<li><a href=\"#\">游轮111</a></li>\n" +
-        "\t\t\t\t\t<li><a href=\"#\">出境首页</a></li>\n" +
-        "\t\t\t\t</ul>\n" +
-        "\t\t\t</li>\n" +
-        "\t\t\t<li><a href=\"#\">音频<span class=\"trig\"></span></a>\n" +
-        "\t\t\t\t<ul id=\"radio\">\n" +
-        "\t\t\t\t\t<li><a href=\"#\">出境首页</a></li>\n" +
-        "\t\t\t\t\t<li><a href=\"#\">当地玩乐</a></li>\n" +
-        "\t\t\t\t</ul>\n" +
-        "\t\t\t</li>\n" +
-        "\n" +
-        "\n" +
-        "\t\t</ul>\n" +
-        "\n";
-
-    //alert("strMenu");
-   // alert(className);
-    $(strMenu).appendTo(className);
-
-
-}
 
 
 /**
@@ -179,38 +22,7 @@ function login() {
 }
 
 
-/**
- * 菜单menu
- */
-function  animateMenu() {
 
-    var toggle = $('#ss_toggle');
-    var menu = $('#ss_menu');
-    var rot;
-    $('#ss_toggle').on('click', function (ev) {
-        rot = parseInt($(this).data('rot')) - 180;
-        menu.css('transform', 'rotate(' + rot + 'deg)');
-        menu.css('webkitTransform', 'rotate(' + rot + 'deg)');
-        if (rot / 180 % 2 == 0) {
-            toggle.parent().addClass('ss_active');
-            toggle.addClass('close');
-        } else {
-            toggle.parent().removeClass('ss_active');
-            toggle.removeClass('close');
-        }
-        $(this).data('rot', rot);
-    });
-    menu.on('transitionend webkitTransitionEnd oTransitionEnd', function () {
-        if (rot / 180 % 2 == 0) {
-            $('#ss_menu div i').addClass('ss_animate');
-        } else {
-            $('#ss_menu div i').removeClass('ss_animate');
-        }
-    });
-
-
-
-}
 
 
 function head_menu(){
@@ -303,7 +115,7 @@ function validate(code_input) {
 }
 
 function leftNav(accordion){
-    $('#'+accordion).find('.link').click(function(){
+    $('#'+accordion).find('.link').on( touchEvents.touchtap,(function(){
         //alert("link click");
         if($(this).parent('li').find('ul').length>0){
             if($(this).siblings('ul').is(':hidden')){
@@ -329,7 +141,7 @@ function leftNav(accordion){
         //alert("link");
 
 
-    });
+    }));
     // alert(accordion);
 
     $('.submenu').find('li').click(function(){
@@ -530,33 +342,51 @@ function circleMenu(){
 /**
  * 进度条方法
  */
-function progressBar(){
-   // alert("进度条");
+function progressBar(h,w,isP,obj){
+   //  alert("进度条");
     //a 底色，b 加载色 , w 展示宽度，h 展示高度
-    var a="#21da9a";
+    var a="#f58400";
     var b="#dfdfdf";
-    var w="150px";
-    var h="16px";
-    var div=$(".progressBar");//进度条要插入的地方
+    var w= w+"px";
+    var h= h +"px";
+    // alert($("."+obj+".progressBar").length);
+    var div=$('.'+obj).find(".progressBar");//$(".progressBar");//进度条要插入的地方
+  //  alert(div.length);
     var barb=function(){
         div.each(function(){
             var width=$(this).attr('w');
-            var barbox='<dl class="barbox"><dd class="barline"><div w="'+width+'" class="charts" style="width:0px;height:16px;"><d></d></div></dd></dl>';
+            var barbox='<dl class="barbox'+obj+'"><dd class="barline'+obj+'">' +
+                '<div w="'+width+'" class="charts'+obj+'" style="width:0px;height:16px;"><d></d></div>' +
+
+                '</dd></dl>' +
+                '' ;
             $(this).append(barbox);
-            //alert(barbox);
+              // alert(barbox);
         })
     }
 
     var amimeat=function(){
-        $(".charts").each(function(i,item){
+        $(".charts"+obj).each(function(i,item){
             var wi=parseInt($(this).attr("w"));
-            $(item).animate({width: wi+"%"},1000,function(){//一天内走完
-                $(this).children('d').html(wi+"%");
+
+            $(item).animate({width: wi+"%"},10,function(){//一天内走完
+                // alert()
+                if(isP==null || isP==false) {
+                    $(this).children('d').html(wi + "%");
+                }else{
+
+                    $(".barbox"+obj).find(".dot").show();
+                }
+
             });
         });
     }
+
+
+
+
     var barbCss=function(a,b){
-        $(".barbox").css({
+        $(".barbox"+obj).css({
             "height":h,
             "line-height":h,
             "text-align":"center",
@@ -564,12 +394,12 @@ function progressBar(){
             "margin":"0px auto 0px auto",
 
             "color":"#fff"
-        })
-        $(".barbox>dd").css({
+        });
+        $(".barbox"+obj+" >dd").css({
             "float":"left",
             "margin-left":"-4px"
-        })
-        $(".barline").css({
+        });
+        $(".barline"+obj).css({
             "width":w,
             "background":b,
             "height":h,
@@ -580,24 +410,640 @@ function progressBar(){
             // "border":"1px solid red",
             "border-radius":"8px"
 
-        })
-        $(".barline>d").css({
+        });
+        $(".barline"+ obj+">d").css({
             "position":"absolute",
             "top":"0px"
-        })
-        $(".charts").css({
+        });
+        $(".charts"+obj).css({
             "background":a,
             "height":h,
             "width":"0px",
             "overflow":"hidden",
+            "font-size":'12px',
             // "border":"1px solid red",
             "border-radius":"8px"
-        })
+        });
+
+        // $(".charts"+obj+":after").css({
+        //     "display":"block",
+        //     "clear":"both"
+        // });
+
+        // $(".barbox"+obj).find(".dot").css({
+        //     "background":"#000",
+        //     "height":"10px",
+        //     "width":"10px",
+        //     "border-radius":"5px",
+        //     "position":"absolute",
+        //     'display':"none",
+        //
+        // });
+
+
     }
     barb();
     amimeat();
     barbCss(a,b);
 }
+
+/**
+ * 唯一ID uuid
+ * @returns {string}
+ */
+var uuid = function() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,
+        function(c) {
+            var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+            return v.toString(16);
+        });
+};
+
+
+/**
+ *
+ * 根据X，Y 坐标 ，角度，计算出 X2， Y2 坐标
+ */
+function  getXYindex(x, y ,R, r,index){
+
+    var xyList = new Array();
+    var x2 = 0.0;
+    var y2 = 0.0
+
+    if(index == null){
+        x2 = x + r *  Math.cos( R * Math.PI / 180);
+        y2 = y + r * (1+r) * Math.sin(R*Math.PI/180);
+        return {x:x2, y:y2};
+    }else {
+        for(var i=0;i<index;i++){
+            x2 = x + r *  Math.cos( R*(1+i) * Math.PI / 180);
+            y2 = y + r * Math.sin(R *(1+i)*Math.PI/180);
+            xyList[i] = {x:x2, y:y2};
+        }
+        return xyList;
+    }
+}
+
+
+
+/**
+ * 根据 xy X2 Y2  坐标 找到旋转的角度
+ */
+function getRot(x,y, x1,y2){
+    var x = Math.abs(x1-x2);
+    var y = Math.abs(y1-y2);
+    var z = Math.sqrt(x*x+y*y);
+    var rotat = Math.round((Math.asin(y/z)/Math.PI*180));
+
+    var x = Math.abs(x1-x2);
+    var y = Math.abs(y1-y2);
+    var z = Math.sqrt(x*x+y*y);
+    var rotat = Math.round((Math.asin(y/z)/Math.PI*180));
+
+// 第一象限
+    if (x2 >= x1 && y2 <= y1) {
+        rotat = rotat;
+    }
+// 第二象限
+    else if (x2 <= x1 && y2 <= y1) {
+        rotat = 180 - rotat;
+    }
+// 第三象限
+    else if (x2 <= x1 && y2 >= y1) {
+        rotat = 180 + rotat;
+    }
+// 第四象限
+    else if(x2 >= x1 && y2 >= y1){
+        rotat = 360 - rotat;
+    }
+    return rotat; //真实的角度
+}
+
+
+/*!
+ * classie - class helper functions
+ * from bonzo https://github.com/ded/bonzo
+ *
+ * classie.has( elem, 'my-class' ) -> true/false
+ * classie.add( elem, 'my-new-class' )
+ * classie.remove( elem, 'my-unwanted-class' )
+ * classie.toggle( elem, 'my-class' )
+ */
+
+/*jshint browser: true, strict: true, undef: true */
+/*global define: false */
+
+( function( window ) {
+
+    'use strict';
+
+// class helper functions from bonzo https://github.com/ded/bonzo
+
+    function classReg( className ) {
+        return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
+    }
+
+// classList support for class management
+// altho to be fair, the api sucks because it won't accept multiple classes at once
+    var hasClass, addClass, removeClass;
+
+    if ( 'classList' in document.documentElement ) {
+        hasClass = function( elem, c ) {
+            return elem.classList.contains( c );
+        };
+        addClass = function( elem, c ) {
+            elem.classList.add( c );
+        };
+        removeClass = function( elem, c ) {
+            elem.classList.remove( c );
+        };
+    }
+    else {
+        hasClass = function( elem, c ) {
+            return classReg( c ).test( elem.className );
+        };
+        addClass = function( elem, c ) {
+            if ( !hasClass( elem, c ) ) {
+                elem.className = elem.className + ' ' + c;
+            }
+        };
+        removeClass = function( elem, c ) {
+            elem.className = elem.className.replace( classReg( c ), ' ' );
+        };
+    }
+
+    function toggleClass( elem, c ) {
+        var fn = hasClass( elem, c ) ? removeClass : addClass;
+        fn( elem, c );
+    }
+
+    var classie = {
+        // full names
+        hasClass: hasClass,
+        addClass: addClass,
+        removeClass: removeClass,
+        toggleClass: toggleClass,
+        // short names
+        has: hasClass,
+        add: addClass,
+        remove: removeClass,
+        toggle: toggleClass
+    };
+
+// transport
+    if ( typeof define === 'function' && define.amd ) {
+        // AMD
+        define( classie );
+    } else {
+        // browser global
+        window.classie = classie;
+    }
+
+})( window );
+
+
+
+
+
+var touchEvents = {
+    touchstart: "touchstart",
+    touchmove: "touchmove",
+    touchend: "touchend",
+    touchtap: "tap",
+
+    /**
+     * @desc:判断是否pc设备，若是pc，需要更改touch事件为鼠标事件，否则默认触摸事件
+     */
+
+    initTouchEvents:function () {
+        // alert("ddd ");
+        if (isPC()) {
+            this.touchstart = "mousedown";
+            this.touchmove = "mousemove";
+            this.touchend = "mouseup";
+            this.touchtap = "click";
+        }
+    }
+
+};
+
+touchEvents.initTouchEvents();
+
+/***
+ * 判断是否pc登录
+ * @returns {boolean}
+ */
+
+function isPC() {
+    var userAgentInfo = navigator.userAgent;
+    var Agents = ["Android", "iPhone",
+        "SymbianOS", "Windows Phone",
+        "iPad", "iPod"];
+    var flag = true;
+    for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+            flag = false;
+            break;
+        }
+    }
+    // alert(flag);
+    return flag;
+}
+
+/**
+ * 获取XY坐标
+ */
+function getXYcordinate(e){
+    e.preventDefault(); // 阻止浏览器默认动作
+    var x;
+    var y ;
+    if(isPC() ){
+        // alert(e.pageX + "  " + e.screenX );
+        x = e.pageX;
+        y = e.pageY;
+    }else {
+        // alert("ddd");
+        var touch = e.originalEvent.targetTouches[0];
+        x = touch.pageX;
+        y = touch.pageY;
+    }
+    // alert(" x 坐标是 " + x + "   y 坐标是 " + y )
+    return {x:x,y:y};
+}
+
+
+/**
+ * 页面Pages设置；
+ * @data 2017-12-28
+ * @param pageObj
+ * @param divObj
+ */
+var pages= function(pageObj,divObj) {
+
+
+    this.totalPages = 0;
+    this.remainPages = 0;
+    this.percentPages = 0;
+    this.currentPages = pageObj.currentPages;
+    this.pageTextObj = divObj;
+    this.barWidth = $(".barlinebookFooterDiv").width();
+    this.dotLeft = $(".barlinebookFooterDiv").offset().left;
+    this.w;
+    this.initPage();
+
+
+}
+
+    /**
+     * 滚动条变化，页面变化
+     * @param x
+     */
+    pages.prototype.percentChangePages = function(x){
+        // var w =0
+        // alert(x + " dddd ");
+        if(x< this.dotLeft){
+            this.w = 1;
+        }else if(x> (this.barWidth + this.dotLeft) ){
+            this.w = this.barWidth;
+        }else {
+            this.w = x- this.dotLeft;
+        }
+
+        this.currentPages  = Math.ceil( (this.w/(this.barWidth/this.totalPages)));
+        if(this.currentPages > this.totalPages){
+            this.currentPages = this.totalPages;
+        }
+        this.remainPages = this.totalPages - this.currentPages;
+        this.setPages(true);
+    }
+
+    /**
+     * 滚动条变化，改变页面信息
+     */
+    pages.prototype.scrollChangePage = function(scroolHeight){
+        this.currentPages = Math.ceil((scroolHeight / this.pageTextObj.height())) +1;
+
+        // alert(this.currentPages);
+        this.w = parseFloat(this.currentPages / this.totalPages * this.barWidth).toFixed(1);
+
+        if(this.w < this.dotLeft){
+            this.w = 0;
+            // this.currentPages =1;
+
+        }else if(this.w > this.barWidth ){
+            this.w = this.barWidth;
+        }
+        this.remainPages = this.totalPages - this.currentPages;
+        this.setPages(false);
+
+
+    }
+
+
+    /**
+     * 分页初始化
+     */
+    pages.prototype.initPage = function(){
+        // // alert(divObj.scrollHeight);
+
+        // alert(this.pageTextObj.prop('scrollHeight'));
+        var scrollHeight = parseInt(this.pageTextObj.prop('scrollHeight'));
+        // alert(scrollHeight);
+        var height =  parseInt( this.pageTextObj.height());
+        // alert(this.currentPages);
+        this.totalPages = Math.ceil(scrollHeight/ height);
+        this.remainPages = this.totalPages - this.currentPages;
+        this.percentPages =  parseFloat(this.currentPages / this.totalPages).toFixed(1) ;
+        this.w = Math.ceil(this.barWidth * this.percentPages);
+         // alert(this.w + " w is " + this.percentPages);
+        if(this.w < this.dotLeft){
+            this.w = 0;
+        }else if(this.w > this.barWidth ){
+            this.w = this.barWidth;
+        }
+
+        $("#totalPages").html(this.totalPages);
+        // this.addEvents();
+        addDodEvents(this);
+        this.setPages(true);
+    }
+
+    pages.prototype.setPages = function(isScroll){
+
+        $("#currentPages").html(this.currentPages);
+        $("#remainPages").html(this.remainPages);
+        this.pageTextObj.scrollTop=(this.currentPage-1)*parseInt(this.pageTextObj.offsetHeight);
+        $(".chartsbookFooterDiv").css({"width": this.w +"px"});
+         // alert((this.dotLeft+ this.w -10 ) + "w " );
+        $(".dot").css({"left": ( parseInt(this.dotLeft)+ parseInt(this.w) -10 )});
+        if(isScroll){
+            var scrollTop = (this.currentPages - 1 ) * parseInt(this.pageTextObj.height());
+            this.pageTextObj.animate({scrollTop:scrollTop},0);
+        }
+    }
+
+    pages.prototype.addEvents = function(){
+        // alert("dddd");
+        $(".dot").bind(touchEvents.touchstart,function(e){  //ontouchmovealert("ddd");
+            $(this).bind(touchEvents.touchmove,function(e){
+                    var xyMove = getXYcordinate(e);
+                    this.percentChangePages(parseFloat( xyMove.x ));
+                }
+            );
+
+            /*$(this).bind(touchEvents.touchend,function(e){
+                    //
+                    // this.xyMove = getXYcordinate(e);
+                    // var x = this.xyMove.x;
+                    // var w =0
+                    // if(x<l){
+                    //     w = 0;
+                    // }else if(x> (width+l) ){
+                    //     w = width;
+                    // }else {
+                    //     w = x- l;
+                    // }
+                    //
+                    // $(".chartsbookFooterDiv").css({"width": w +"px"});
+                    // $(this).css({"left": ( l+ w -10 )});
+                }
+
+            )*/;
+
+
+        });
+    }
+
+
+/**
+ * dot事件
+ * @param pages
+ */
+    function addDodEvents(pages){
+        // alert("dddd");
+        $(".dot").bind(touchEvents.touchstart,function(e){  //ontouchmovealert("ddd");
+            e.preventDefault();
+            e.stopPropagation();
+            $(this).bind(touchEvents.touchmove,function(e){
+                    var xyMove = getXYcordinate(e);
+                    pages.percentChangePages(parseFloat( xyMove.x ));
+                }
+            );
+
+        });
+// alert(pages.pageTextObj.offset.height());
+        $(".bookContextDiv").scroll(function(){
+            // alert($(this).prop("scrollHeight"));
+
+            pages.scrollChangePage($(this).scrollTop());
+        });
+
+    }
+
+    // this.initPage();
+
+
+//加密方法。没有过滤首尾空格，即没有trim.
+//加密可以加密N次，对应解密N次就可以获取明文
+function encodeBase64(mingwen,times){
+    var code="";
+    var num=1;
+    if(typeof times=='undefined'||times==null||times==""){
+        num=1;
+    }else{
+        var vt=times+"";
+        num=parseInt(vt);
+    }
+
+    if(typeof mingwen=='undefined'||mingwen==null||mingwen==""){
+
+    }else{
+        $.base64.utf8encode = true;
+        code=mingwen;
+        for(var i=0;i<num;i++){
+            code=$.base64.btoa(code);
+        }
+    }
+    return code;
+}
+
+
+//解密方法。没有过滤首尾空格，即没有trim
+//加密可以加密N次，对应解密N次就可以获取明文
+function decodeBase64(mi,times){
+    var mingwen="";
+    var num=1;
+    if(typeof times=='undefined'||times==null||times==""){
+        num=1;
+    }else{
+        var vt=times+"";
+        num=parseInt(vt);
+    }
+
+
+    if(typeof mi=='undefined'||mi==null||mi==""){
+
+    }else{
+        $.base64.utf8encode = true;
+        mingwen=mi;
+        for(var i=0;i<num;i++){
+            mingwen=$.base64.atob(mingwen);
+        }
+    }
+    return mingwen;
+}
+
+
+/**
+ * 获取背景颜色值a  2018-01-13 marrisa
+ * @param obj
+ * @returns {string}
+ */
+function backGroundClor(obj){
+    // alert(obj.css('background-color'));
+
+    var rgb = obj.css('background-color');
+    var temp = rgb.substring(5,rgb.length-1).toString();
+
+    var arrtemp = temp.split(",");
+    // alert( arrtemp[0]+ " " + arrtemp[1] + "  " + arrtemp[2]+ " " + arrtemp[3]);
+    var rv = {};
+    var str ="#";
+    for(var i= 0;i<3;i++){
+        // alert(arrtemp[i]);
+        var tem = parseInt(arrtemp[i]).toString(16);
+        // alert(tem.length +  "  is " + tem );
+        if(tem.length ==1){
+            str +='0'+tem;
+        }else{
+            str += tem;
+        }
+    }
+
+    rv = {background_color:str,opacity:arrtemp[3]};
+    return rv;
+}
+
+
+/**
+ * 时间
+ */
+function dateTime2(formate){
+
+    var myDate = new Date();
+//获取当前年
+    var year=myDate.getFullYear();
+//获取当前月
+    var month=myDate.getMonth()+1;
+//获取当前日
+    var date=myDate.getDate();
+    var h=myDate.getHours();       //获取当前小时数(0-23)
+    var m=myDate.getMinutes();     //获取当前分钟数(0-59)
+    var s=myDate.getSeconds();
+
+    function p(s) {
+        return s < 10 ? '0' + s: s;
+    }
+
+    var now = year+ formate +p(month)+ formate +p(date)+ " " +p(h)+':'+p(m)+":"+p(s);
+    return now;
+}
+
+
+/**
+ * 时间
+ */
+function dateTime(){
+
+    var myDate = new Date();
+//获取当前年
+    var year=myDate.getFullYear();
+//获取当前月
+    var month=myDate.getMonth()+1;
+//获取当前日
+    var date=myDate.getDate();
+    var h=myDate.getHours();       //获取当前小时数(0-23)
+    var m=myDate.getMinutes();     //获取当前分钟数(0-59)
+    var s=myDate.getSeconds();
+
+    function p(s) {
+        return s < 10 ? '0' + s: s;
+    }
+    var now = year+p(month) +p(date) +p(h)+p(m)+p(s);
+    return now;
+}
+
+
+
+function dateYYYYMMDD(formate){
+    var myDate = new Date();
+//获取当前年
+    var year=myDate.getFullYear();
+//获取当前月
+    var month=myDate.getMonth()+1;
+//获取当前日
+    var date=myDate.getDate();
+    var now = year+ formate +p(month)+ formate +p(date);
+    return now;
+}
+
+
+
+/**
+ * 根据参数名，获取http请求的参数值
+ */
+var getParameter = function (name){
+    var paramStr=window.location.search;
+    if(paramStr.length==0)return null;
+    if(paramStr.charAt(0)!='?')return null;
+    paramStr=unescape(paramStr);
+    paramStr=paramStr.substring(1);
+    if(paramStr.length==0)return null;
+    var params=paramStr.split('&');
+    var p = null;
+    var lenParams  =  params.length;
+    for(var i=0;i<lenParams;i++){
+        if(params[i].indexOf(name) >= 0){
+            p = params[i].split('=');
+            p = p[1];
+            break;
+        }
+    }
+    paramStr = null;
+    params = null;
+    return p;
+};
+
+
+/**
+ * 计算文件大小
+ */
+
+function fileSize(inputSize){
+     // alert(inputSize);
+    if(inputSize == null || inputSize == undefined){
+        return ;
+    }
+
+    var temp  =(parseFloat(inputSize) / 1024);
+    // alert(temp);
+    if( temp > 1 && temp <1000 ){
+        return parseFloat(temp.toFixed(3))+ " KB";
+    }
+    temp  = temp / 1024;
+    if(temp > 1 && temp <1000  ){
+        return parseFloat(temp.toFixed(3)) + " M";
+    }
+
+    temp  =temp / 1024;
+    if(temp > 1 && temp <1000  ){
+        return parseFloat(temp.toFixed(3)) + " G";
+    }
+
+    return  inputSize + " b";
+
+}
+
 
 
 

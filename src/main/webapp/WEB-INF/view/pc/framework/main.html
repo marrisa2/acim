@@ -1,94 +1,160 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- <link rel="shortcut icon" href="../images/favicon.png" type="image/png"> -->
-    <link rel="stylesheet" href="../../../statics/css_wz/miracles.css" th:href="@{/css_wz/miracles.css}" type='text/css'></link>
-    <link rel="stylesheet" href="../../../statics/css_wz/main-head-menu.css" th:href="@{/css_wz/main-head-menu.css}" type='text/css'></link>
-    <link rel="stylesheet" href="../../../statics/css_wz/font-awesome.min.css" th:href="@{/css_wz/font-awesome.min.css}" type="text/css">
-    <link rel="stylesheet" href="../../../statics/css_wz/menu.css" media="screen" th:href="@{/css_wz/menu.css}" type="text/css"/>
-    <link rel="stylesheet" href="../css_wz/leftnav.css" media="screen" th:href="@{/css_wz/leftnav.css}" type="text/css"/>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
 
-    <title>修行网站</title>
+    <title>奇迹</title>
 
+    <!--  iconfont 样式css -->
+    <link rel='stylesheet' href="../../../statics/css_jquery_mobile/iconfont.css"
+          th:href="@{/css_jquery_mobile/iconfont.css}" type='text/css'/>
+
+    <!-- 主要页面样式 -->
+    <link rel='stylesheet' href="../../../statics/css_jquery_mobile/pubCss.css"
+          th:href="@{/css_jquery_mobile/pubCss.css}" type='text/css'/>
+
+
+    <!-- 圆形菜单 样式-->
+    <link rel='stylesheet' href="../../../statics/css_wz/circleMenu.css"
+          th:href="@{/css_wz/circleMenu.css}" type='text/css'/>
+
+
+
+
+    <!-- awesome 样式-->
+    <link rel="stylesheet" href="../../../statics/css/font-awesome.min.css"
+          th:href="@{/css/font-awesome.min.css}" type="text/css"/>
+
+    <!-- 全局整体样式 样式-->
+    <link rel='stylesheet' href="../../../statics/css_wz/gloab.css"
+          th:href="@{/css_wz/gloab.css}" type='text/css'>
+
+    <!-- swiper 样式-->
+    <link rel='stylesheet' href="../../../statics/css_jquery_mobile/swiper.min.css"
+          th:href="@{/css_jquery_mobile/swiper.min.css}" type='text/css'>
+
+    <link rel="stylesheet" href="../../../statics/css_wz/css-jquery-file-upload/jquery.fileupload.css"
+          th:href="@{/css-jquery-file-upload/jquery.fileupload.css}">
+
+    <link rel="stylesheet" href="../../../statics/css_wz/css-jquery-file-upload/jquery.fileupload-ui.css"
+          th:href="@{/css-jquery-file-upload/jquery.fileupload-ui.css}">
 
 </head>
 
-<body class='main_section'>
-<input type='text' value='miracles_text' style='display:none;' id="bookId"/>
+<body class="fixed">
+
+
 <section>
-    <div class="global_linker">
-        <!--  <div  class='global_linker_right'> <!--global_linker_right -->
 
-    </div>
-    <div class="global_linker_left">
+    <div class="container show" id="page-1">
 
-        <!--  </div>-->
-
-    </div>
-    <!--  end global_linker  -->
-
-    <div class="global_header">
-
-
-
-    </div>
-    <!--  end  global_header -->
-
-    <div class="wz_context">
-
-        <div class="miracle-context-catalog" id="catalog"></div>
-        <!-- end miracle-context-catalog -->
-        <div class="miracle-context-chapter" id="context">
-            <div class="miracle-context-chapter-pages"></div>
-
-        </div>
-    </div>
-    <!-- end wz_context -->
-
-
-    <!-- 圆形菜单 -->
-    <div id='ss_menu'>
-        <div><i class="fa fa-qq"></i></div>
-        <div><i class="fa fa-weibo"></i></div>
-        <div><i class="fa fa-weixin"></i></div>
-        <div><i class="fa fa-renren"></i></div>
-        <div class='menu'>
-            <div class='share' id='ss_toggle' data-rot='180'>
-                <div class='circle'></div>
-                <div class='bar'></div>
+        <div class="homePage_div">
+            <div class="homePage_headSearch"></div>
+            <div class="acim_logo"></div>
+            <div id="homePageContextMenu"></div>
+            <div class="main_context_iphone">
+                <div class="swiper-container"></div>
             </div>
         </div>
+
+        <div class="multiMedia_div" style="display: none">
+            <div class="multiMedia_headSearch"></div>
+            <div class="mulMedia_header">
+
+            </div>
+
+        </div>
+        <div class="information_div" style="display: none"> 信息</div>
+        <div class="myself_div" style="display: none"> 我的</div>
+
+
     </div>
+    <div class="footer"></div>
 
 
 </section>
-
-<link rel='stylesheet' href="../../../statics/css/style.default.css" th:href="@{/css/style.default.css}" type='text/css'></link>
-<link rel='stylesheet' href="../../statics/css/css/jquery-ui-1.10.3" th:href="@{/css/jquery-ui-1.10.3}" type='text/css'></link>
-<link rel='stylesheet' href="../../../statics/css/jquery.gritter.css" th:href="@{/css/jquery.gritter.css}" type='text/css'></link>
-<link rel='stylesheet' href="../../../statics/js/ymPrompt/skin/qq/ymPrompt.css" th:href="@{/js/ymPrompt/skin/qq/ymPrompt.css}" type='text/css'></link>
-<link rel='stylesheet' href="../../../statics/css_wz/miracles.css" th:href="@{/css_wz/miracles.css}" type='text/css'></link>
-
-<link rel='stylesheet' href="../../../statics/css_wz/styles.css" th:href="@{/css_wz/styles.css}" type='text/css'></link>
-
-
-<script type="text/javascript" src="../../../statics/js/jquery/jquery-1.11.1.min.js" th:src="@{/js/jquery/jquery-1.11.1.min.js}"></script>
-<script type="text/javascript" src='../../../statics/js/jquery/jquery-ui-1.10.3.min.js' th:src="@{/js/jquery/jquery-ui-1.10.3.min.js}"></script>
-<script type="text/javascript" src='../../../statics/js/jquery/bootstrap.min.js' th:src="@{/js/jquery/bootstrap.min.js}"></script>
-<script type="text/javascript" src='../../../statics/js/jquery/jquery.datatables.min.js' th:src="@{/js/jquery/jquery.datatables.min.js}"></script>
-<script type="text/javascript" src='../../../statics/js/jquery/jquery.gritter.min.js' th:src="@{/js/jquery/jquery.gritter.min.js}"></script>
-<script type="text/javascript" src='../../../statics/js/js_pub/wz_util.js' th:src="@{/js/js_pub/wz_util.js}"></script>
-<script type="text/javascript" src='../../../statics/js/ymPrompt/ymPrompt.js' th:src="@{/js/ymPrompt/ymPrompt.js}"></script>
-
-
-<script type="text/javascript" src='../../../statics/js/js_view/framework/main.js' th:src="@{/js/js_view/framework/main.js}"></script>
-<script type="text/javascript" src="../../../statics/js/js_view/acim/acim.js" th:src="@{/js/js_view/acim/acim.js}"></script>
-
-
 </body>
+<script th:src="@{js/jquery/jquery-1.11.1.min.js}"></script>
+<script th:src="@{js/jquery/jquery-migrate-1.2.1.min.js}"></script>
+<script th:src="@{js/jquery/bootstrap.min.js}"></script>
+<script th:src="@{js/jquery/modernizr.min.js}"></script>
+<script th:src="@{js/jquery/jquery.sparkline.min.js}"></script>
+<script th:src="@{js/jquery/toggles.min.js}"></script>
+<script th:src="@{js/jquery/retina.min.js}"></script>
+<script th:src="@{js/jquery/jquery.cookies.js}"></script>
+<script th:src="@{js/jquery/jquery.datatables.min.js}"></script>
+<script th:src="@{js/jquery/select2.min.js}"></script>
+
+
+<!-- -->
+<script src="js/custom.js"></script>
+
+
+<!-- swiper.js-->
+<script type="text/javascript" src="../../../statics/js/js_pub/swiper.min.js"
+        th:src="@{/js/js_pub/swiper.min.js}"></script>
+
+<!--mobile.js-->
+<script type="text/javascript" src="../../../statics/js/jquery-mobile/jquery.mobile-1.4.5.js"
+        th:src="@{/js/jquery-mobile/jquery.mobile-1.4.5.js}"></script>
+
+
+<!--<script type="text/javascript" src="../../../statics/css_jquery_mobile/iconfont.js"-->
+        <!--th:src="@{/css_jquery_mobile/iconfont.js}"></script>-->
+
+<script type="text/javascript"  src='../../../statics/js/layer.js'
+        th:src="@{/js/layer.js}" ></script>
+
+<!--公共方法.js-->
+<!--<script type="text/javascript" src="../../../statics/js/js_pub/jquery.contextMenu.min.js"-->
+        <!--th:src="@{/js/js_pub/jquery.contextMenu.min.js}"></script>-->
+
+<script type="text/javascript" src="../../../statics/js/jquery-file-upload/jquery.fileupload-ui.js"
+        th:src="@{/js/jquery-file-upload/jquery.fileupload-ui.js}"></script>
+
+<script type="text/javascript" src="../../../statics/js/jquery-file-upload/jquery.iframe-transport.js"
+        th:src="@{/js/jquery-file-upload/jquery.iframe-transport.js}"></script>
+
+<script type="text/javascript" src="../../../statics/js/jquery-file-upload/jquery.fileupload.js"
+        th:src="@{/js/jquery-file-upload/jquery.fileupload.js}"></script>
+
+<!--公共方法.js-->
+<script type="text/javascript" src="../../../statics/js/js_pub/wz_util.js"
+        th:src="@{/js/js_pub/wz_util.js}"></script>
+
+<!--table.js-->
+<script type="text/javascript" src='../../../statics/js/js_view/tools/tableUtil.js'
+        th:src="@{/js/js_view/tools/tableUtil.js}"></script>
+
+<!--上传文件.js-->
+<script type="text/javascript" src='../../../statics/js/js_view/media/uploadFile.js'
+        th:src="@{/js/js_view/media/uploadFile.js}"></script>
+
+<!--book.js-->
+<script type="text/javascript" src='../../../statics/js/js_view/media/book.js'
+        th:src="@{/js/js_view/media/book.js}"></script>
+
+
+
+<!--&lt;!&ndash;直播.js&ndash;&gt;-->
+<!--<script type="text/javascript" src='../../../statics/js/js_view/media/zhibo.js'-->
+        <!--th:src="@{/js/js_view/media/zhibo.js}"></script>-->
+
+
+<!-- 多媒体.js-->
+<script type="text/javascript" src='../../../statics/js/js_view/media/media.js'
+        th:src="@{/js/js_view/media/media.js}"></script>
+
+<!-- 首页.js-->
+<script type="text/javascript" src='../../../statics/js/js_view/framework/main-pub.js'
+        th:src="@{/js/js_view/framework/main-pub.js}"></script>
+
+
+
 </html>
+

@@ -1,8 +1,8 @@
 package com.wz.framework.pub;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wz.tools.DeviceUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
+
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -14,6 +14,7 @@ import java.util.Enumeration;
 import java.util.Map;
 import java.util.StringTokenizer;
 import java.util.TreeMap;
+import org.apache.commons.lang3.StringUtils;
 
 public class Servlet2Utils {
 
@@ -27,6 +28,13 @@ public class Servlet2Utils {
         return getSessionAttribute();
     }
 
+    //-- header 常量定义 --//
+    private static final String HEADER_ENCODING = "encoding";
+    private static final String HEADER_NOCACHE = "no-cache";
+    private static final String DEFAULT_ENCODING = "UTF-8";
+    private static final boolean DEFAULT_NOCACHE = true;
+
+    private static ObjectMapper mapper = new ObjectMapper();
 
 
 
@@ -36,7 +44,7 @@ public class Servlet2Utils {
         boolean isIPhone = DeviceUtils.isMobileDevice(getRequest());
         if(isIPhone){
             //WzCons.setsourceOfMachine("iphone");
-            return "iphone/" +urlName ;
+            return "pc/" +urlName ;
         }else{
             //WzCons.setsourceOfMachine("iphone");
             return "pc/" + urlName;
@@ -44,12 +52,26 @@ public class Servlet2Utils {
 
     }
 
+    /**
+     * 获取Request
+     * @return
+     */
     public static HttpServletRequest getRequest(){
         HttpServletRequest request2 = ((ServletRequestAttributes) RequestContextHolder
                 .getRequestAttributes())
                 .getRequest();
        // request = request2;
         return request2;
+    }
+
+    /**
+     * 获取Response
+     * @return
+     */
+    public static HttpServletResponse getResponse(){
+        HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder
+                .getRequestAttributes()).getResponse();
+        return response;
     }
 
 
@@ -244,4 +266,38 @@ public class Servlet2Utils {
         //return "Basic " + EncodeUtil.base64Encode(encode.getBytes());
         return null;
     }
+
+
+    /**
+     * 分析并设置contentType与headers.
+     */
+    protected static HttpServletResponse initResponseHeader(final String contentType, final String... headers) {
+        //分析headers参数
+        String encoding = DEFAULT_ENCODING;
+        boolean noCache = DEFAULT_NOCACHE;
+        for (String header : headers) {
+            String headerName = StringUtils.substringBefore(header, ":");
+            String headerValue = StringUtils.substringAfter(header, ":");
+
+            if (StringUtils.equalsIgnoreCase(headerName, HEADER_ENCODING)) {
+                encoding = headerValue;
+            } else if (StringUtils.equalsIgnoreCase(headerName, HEADER_NOCACHE)) {
+                noCache = Boolean.parseBoolean(headerValue);
+            } else {
+                throw new IllegalArgumentException(headerName + "不是一个合法的header类型");
+            }
+        }
+
+       HttpServletResponse response = getResponse();
+
+        //设置headers参数
+        String fullContentType = contentType + ";charset=" + encoding;
+        response.setContentType(fullContentType);
+        if (noCache) {
+            ServletUtils.setNoCacheHeader(getResponse());
+        }
+
+        return response;
+    }
+
 }

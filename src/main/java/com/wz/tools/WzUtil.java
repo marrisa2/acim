@@ -47,6 +47,31 @@ public class WzUtil {
 	}
 
 
+	/**
+	 * @auther  marrisa
+	 * @date 2018-02-10
+	 * 比较两个byte数组是否相等
+	 * @param bt1
+	 * @param bt2
+	 * @return
+	 */
+	public static boolean compareBytes(byte[] bt1, byte[] bt2){
+		boolean flag = true;
+		//如果长度不相等，则直接返回false
+		if(bt1.length != bt2.length){
+			return false;
+		}
+		//如果有一个位置的元素不相等，则直接跳出循环
+		for(int i=0; i<bt1.length; i++){
+			if(bt1[i] != bt2[i]){
+				flag = false;
+				break;
+			}
+		}
+		return flag;
+	}
+
+
 
 	 
 }

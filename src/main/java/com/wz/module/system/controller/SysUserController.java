@@ -54,7 +54,7 @@ public class SysUserController {
 	@ResponseBody
 	public SysUser saveUser(SysUser sysUser) {
 		if (sysUser != null) {
-			sysUser.setSysUserRegisterDatetime(new Date());
+//			sysUser.setSysUserRegisterDatetime(new Date());
 			return sysUserService.saveAndUpdateSysUser(sysUser);
 		}
 		return null;

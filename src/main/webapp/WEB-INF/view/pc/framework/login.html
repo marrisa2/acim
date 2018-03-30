@@ -1,199 +1,473 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>OH God 登录</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="images/zipeiyi_icon.ico">
+
+    <link rel='stylesheet' href="../../../statics/css_jquery_mobile/iconfont2.css"
+          th:href="@{/css_jquery_mobile/iconfont2.css}" type='text/css'/>
+    <link rel='stylesheet' href="../../../statics/css/style.default.css"
+          th:href="@{/css/style.default.css}" type='text/css'>
+
+    <link rel='stylesheet' href="../../../statics/css/bootstrap.css"
+          th:href="@{/css/bootstrap.css}" type='text/css'>
+
+
+
+    <link rel='stylesheet' href="../../../statics/css/jquery.gritter.css"
+          th:href="@{/css/jquery.gritter.css}" type='text/css'>
+
+
+    <link rel='stylesheet' href="../../../statics/css_wz/layer.css"
+          th:href="@{/css_wz/layer.css}" type='text/css'>
+
+    <link rel='stylesheet' href="../../../statics/css_wz/gloab.css"
+          th:href="@{/css_wz/gloab.css}" type='text/css'>
+
+    <link rel='stylesheet' href="../../../statics/css_wz/login.css"
+          th:href="@{/css_wz/login.css}" type='text/css'>
+
+
+    <title>奇迹课程</title>
+
+
 </head>
-<body>
-<div class="login-wrap">
-    <div class="wrap clearfix">
-        <div class="form-box fr loginV2" style="display:block;">
-            <ul class="form-tab clearfix">
-                <li class="tab-li"><a href="javascript:;" tjjj="passport.login_type.wixin_qrcode">微信登录<i
-                        class="icon"></i></a></li>
-                <li class="tab-li cur"><a href="javascript:;" tjjj="passport.login_type.login_name">账号登录</a></li>
-            </ul>
-            <div class="form-con">
-                <div class="weixin-login" style="display:none;">
-                    <div class="wx-box clearfix">
-                        <a href="javascript:;" class="wx-img-box">
-                            <img class="wx-qrCode" src="images/ewm.jpg" id="qrCodeImg">
-                            <img class="wx-qrCode-logo" src="images/ewm.jpg" id="qrCodeLogo">
-                            <img class="statusImg" src="images/wx-confirm.png" id="statusImg">
-                            <div id="weixin_login_container" style="display:none;"></div>
-                        </a>
-                        <img src="images/wx-image.png" class="wx-image">
-                    </div>
-                    <p class="wx-text">微信扫一扫 快速登录</p>
-                    <p class="wx-help"><a href="javascript:;" class="help-a">如何使用？</a></p>
-                </div>
-                <div class="login-normal" style="display:block;">
-                    <form id="nameLoginForm" method="post" autocomplete="off" onsubmit="return nameLoginCheck();">
-                        <div class="form-error" style=""><i></i><label class="text"></label></div>
-                        <dl class="clearfix">
-                            <dt>账户名：</dt>
-                            <dd><input type="text" name="loginName" id="normalUser" class="input-text"
-                                       autocomplete="off"/><span class="placeholder">用户名/邮箱/手机号</span></dd>
-                        </dl>
-                        <dl class="top1 clearfix">
-                            <dt>密<em></em>码：</dt>
-                            <dd><input type="password" name="password" id="normalPassword" class="input-text"><span
-                                    class="placeholder">请输入密码</span></dd>
-                        </dl>
+<body  class="login_page" >
+<link class="signin">
+<section >
+    <div class="signinpanel">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="signin-info">
+                    <div class="logopanel">
+                        <h1 style="color: #333333;"><span>[</span> 奇迹课程自修系统 <span>]</span></h1>
+                    </div><!-- logopanel -->
+                    <div class="mb20"></div>
+                    <h5 style="color: #666666;"><strong>欢迎使用仙子-奇迹课程自修课程</strong></h5>
+                </div><!-- signin0-info -->
+            
+            </div><!-- col-sm-7 -->
+            
+            <div id='homePageDiv' class="col-md-5">
 
-                        <div class="form-remember">
+                <div id="loginPage">
+                <form method="post" action="user_login_go" id = 'login_form'>
+                    <!--<h4 class="nomargin">账号</h4>-->
 
-                            <input name="rememberName" type="checkbox" id="remUser" class="rem-check"
-                                   style="display:none;" checked="checked">
-                            <span class="rem-box rem-box-r memCheck"><input name="rememberMe" type="checkbox"
-                                                                            id="remLogin"
-                                                                            class="rem-check">三个月之内免登录</span>
-                        </div>
-                        <div class="btn-box clearfix">
-                            <input id="normalSubmit" class="btn-settlement" type=submit value="登    录"
-                                   tjjj="passport.button.login">
+                    <ul class="accountInforUl">
+                        <li id="accountLi">账号</li>
+                        <!--<li id="duanxinLi">短信</li>-->
+                    </ul>
 
-                        </div>
-                        <div class="link-box clearfix">
-                            <a href="javascript:;" class="register" tjjj="passport.login.fstreg">新用户注册</a>
-                            <a href="javascript:;" class="forget-pass" tjjj="passport.forget.password">忘记密码？</a>
-                        </div>
-                    </form>
-                    <div class="login-short clearfix">
-                        <div class="short-left">
-                            <h3>使用合作账号登录：</h3>
-                            <ul class="clearfix">
-                                <li class="qq"><a a href="javascript:;" tjjj="passport.login.thd.login.qq"></a></li>
-                                <li class="sina"><a href="javascript:;" tjjj="passport.login.thd.login.sina"></a></li>
-                                <li class="weixin"><a href="javascript:;" tjjj="passport.login.thd.login.weixin"></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="short-right">
-                            <h3>您还可以选择：</h3>
-                            <p class="phone-short clearfix">
-                                <i class="phone"></i>
-                                <a href="javascript:;" tjjj="" class="txt phoneLogin">手机快捷登录</a>
-                            </p>
+                    <div id="accountLogin">
+                        <input type="text" class="form-control uname required" id="name" value='' name="name"
+                               data-valid="isNonEmpty"
+                        data-error="用户名不能为空"  placeholder="用户名/手机号"/>
+                        <input type="password" class="form-control  required" id="password" name="password"
+                               placeholder="密码"/>
+                        <a class="btn btn-success btn-block" style="color:#FFF" id="login">登 录</a>
+                        <div class="login">
+                            <label class="login_fogetPassword"><a> 忘记密码</a> </label>
+                            <label class="login_register"><a> 免费注册</a></label>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- -快捷登录 -->
-        <div class="form-box fr shortLogin" style="display:none;">
-            <h5 class="title">快捷登录</h5>
-            <div class="form-con">
-                <form id="mobileLoginForm" method="post" onsubmit="return mobileLoginCheck();">
-                    <div class="form-error" style=""><i></i><label class="text"></label></div>
-                    <dl class="clearfix">
-                        <dt>手机号：</dt>
-                        <dd><input name="mobile" type="text" id="partnerPhone" autocomplete="off"
-                                   class="input-text mobile" maxlength="11" onblur="mobileCheck(this);"><span
-                                class="placeholder">请输入手机号</span></dd>
-                    </dl>
-                    <dl class="top1 clearfix">
-                        <dt>验证码：</dt>
-                        <dd>
-                            <input name="smsCaptcha" type="text" id="partnerYzm" class="input-yzm"
-                                   onblur="captchCheck(this);" maxlength="4" autocomplete="off"/>
-                            <span class="span-yzm">
-									<img id="smsCaptchaImage" src="images/code.jpg" title="点击图片刷新校验码" alt="点击图片刷新校验码"
-                                         onclick="changeCode('smsCaptchaImage','partnerYzm');"/>
-									<a href="javascript:changeCode('smsCaptchaImage','partnerYzm');"
-                                       class="forget-pass">换一张</a>
-								</span>
-                        </dd>
-                    </dl>
-                    <dl class="top2 clearfix">
-                        <dt>校验码：</dt>
-                        <dd>
-                            <input name="code" type="text" id="partnerJym" class="input-jym" maxlength="6"
-                                   autocomplete="off"/>
-                            <a id="smsSendButton" href="javascript:sendSms(this);" class="span-jym disabled"
-                               tjjj="passport.send.msg">发送短信校验码</a>
-                        </dd>
-                    </dl>
-                    <div class="form-remember">
+                    <div id="duanxinLogin">
+                        <input type="text" class="form-control uname required" id="iphone" value='13321185092' name="iphone"
+                               data-valid="isNonEmpty||isPhone" data-error="手机号码不能为空||手机号码格式不正确" placeholder="手机号"/>
+                        <input type="text" class="form-control " id="yzm" name="yzm"
+                               placeholder="验证码" style="width:130px;float:left;"/>
+                        <span class="btn btn-gray f-r3 f-ml5 f-size13" disabled style="width:97px; ">发送验证码</span>
 
-                        <input name="rememberName" type="checkbox" id="remUser" class="rem-check" style="display:none;"
-                               checked="checked">
-                        <span class="rem-box rem-box-r"><input name="rememberMe" type="checkbox" id="remLogin"
-                                                               class="rem-check">三个月之内免登录</span>
-                    </div>
-                    <div class="btn-box clearfix">
-                        <input id="partnerSubmit" class="btn-settlement" type="submit" value="登    录"
-                               tjjj="passport.quick.button.login">
-
-                    </div>
-                    <div class="link-box clearfix">
-                        <a href="javascript:;" class="backLogin">返回账号登录>></a>
+                        <a class="btn btn-success btn-block" style="color:#FFF;float:none;" id="login2">登 录</a>
                     </div>
                 </form>
+                </div>
+            </div><!-- col-sm-5 -->
+            
+        </div><!-- row -->
+        
+        <div class="signup-footer">
+            <div class="pull-left">
+                <!--©2014-2015 Zipeiyi.com All Rights Reserved 版权所有丨京ICP备14048624号-->
             </div>
         </div>
+        
+    </div><!-- signin -->
 
+
+
+
+
+
+  
+</section>
+
+
+
+
+
+<script type="text/javascript" src="../../../statics/js/jquery/jquery-1.11.1.min.js"
+            th:src="@{/js/jquery/jquery-1.11.1.min.js}" > </script>
+
+<script type="text/javascript"  src='../../../statics/js/layer.js'
+            th:src="@{/js/layer.js}" ></script>
+
+<script type = "text/javascript" src="../../../statics/js/jquery/jquery.gritter.min.js"
+        th:src="@{/js/jquery/jquery.gritter.min.js}"
+></script>
+
+<script type="text/javascript"  src='../../../statics/js/js_pub/register.js'
+        th:src="@{/js/js_pub/register.js}" ></script>
+
+<script type="text/javascript" src='../../../statics/js/jquery/jquery.base64.js'
+        th:src="@{/js/jquery/jquery.base64.js}"> </script>
+
+<script type="text/javascript" src='../../statics/js/pub_js/wz_util.js'
+            th:src="@{/js/js_pub/wz_util.js}"> </script>
+
+<script type="text/javascript" src='../../../statics/js/js_view/framework/login.js'
+        th:src="@{/js/js_view/framework/login.js}" ></script>
+
+
+
+<!--
+<script src="../js/jquery-1.11.1.min.js"></script>
+<script src="../js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/modernizr.min.js"></script>
+<script src="../js/jquery.sparkline.min.js"></script>
+<script src="../js/toggles.min.js"></script>
+<script src="../js/retina.min.js"></script>
+<script src="../js/jquery.cookies.js"></script>
+-->
+
+<div id="yzzz_div_DIV" >
+<div id = "forgetPassword">
+
+    <div class="login-box f-mt10 f-pb50">
+        <div class="main bgf">
+            <div class="reg-box-pan display-inline">
+
+                <div class="reg-box" id="verifyCheck_pass" style="margin-top:20px;">
+                    <div class="passwordPart1">
+
+                        <div class="item col-xs-12">
+                            <span class="intelligent-label f-fl"><b class="ftx04">*</b>手机号：</span>
+                            <div class="f-fl item-ifo">
+                                <input type="text" class="txt03 f-r3 required" keycodes="tel" tabindex="2"
+                                       data-valid="isNonEmpty||isPhone" data-error="手机号码不能为空||手机号码格式不正确"
+                                       maxlength="11" id="phone_pass" />
+                                <span class="ie8 icon-close close hide"></span>
+                                <label class="icon iconfont icon-xiaoxi3-copy blank hide"></label>
+                                <label class="focus">请填写11位有效的手机号码</label>
+                                <label class="focus valid"></label>
+                            </div>
+                        </div>
+
+
+                        <div class="item col-xs-12">
+                            <span class="intelligent-label f-fl"><b class="ftx04">*</b>验证码：</span>
+                            <div class="f-fl item-ifo">
+                                <input type="text" maxlength="6" id="verifyNo_pass" class="txt03 f-r3 f-fl required" tabindex="4" style="width:167px"
+                                       data-valid="isNonEmpty||isInt"
+                                       placeholder="验证码是6位数"
+                                       data-error="验证码不能为空||请输入6位数字验证码" />
+                                <span class="btn btn-gray f-r3 f-ml5 f-size13" id="time_box_pass" disabled style="width:97px;display:none;">发送验证码</span>
+                                <span class="btn btn-gray f-r3 f-ml5 f-size13" id="verifyYz_pass" style="width:97px;">发送验证码</span>
+                                <span class="ie8 icon-close close hide" style="right:130px"></span>
+                                <label class="icon iconfont icon-xiaoxi3-copy blank hide"></label>
+                                <label id='yzm_info_pass' >
+                                    <!--<i class="icon iconfont icon-BAI-fuxuankuangs"> </i>-->
+                                    <span>校验码已发送到您的手机上,有效时间为5分钟!!!</span>
+                                </label>
+                                <label class="focus valid"></label>
+                            </div>
+                        </div>
+
+
+                        <div class="item col-xs-12">
+                            <span class="intelligent-label f-fl">&nbsp;</span>
+                            <div class="f-fl item-ifo">
+                                <a href="javascript:;" class="btn btn-blue f-r3" id="btn_part1_pass">下一步</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="passwordPart2" style="display:none">
+                        <div class="item col-xs-12">
+                            <span class="intelligent-label f-fl"><b class="ftx04">*</b>密码：</span>
+                            <div class="f-fl item-ifo">
+                                <input type="password" id="password_pass" maxlength="20" class="txt03 f-r3 required" tabindex="3" style="ime-mode:disabled;" onpaste="return  false"
+                                       autocomplete="off" data-valid="isNonEmpty||between:6-20||level:2"
+                                       data-error="密码不能为空||密码长度6-20位||该密码太简单，有被盗风险，建议字母+数字的组合" />
+                                <span class="ie8 icon-close close hide" style="right:55px"></span>
+                                <span class="showpwd" data-eye="password"></span>
+                                <label class="icon-sucessfill blank hide"></label>
+                                <label class="focus">6-20位英文（区分大小写）、数字、字符的组合</label>
+                                <label class="focus valid"></label>
+                                <span class="clearfix"></span>
+                                <label class="strength">
+                                    <span class="f-fl f-size12">安全程度：</span>
+                                    <b><i>弱</i><i>中</i><i>强</i></b>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="item col-xs-12">
+                            <span class="intelligent-label f-fl"><b class="ftx04">*</b>确认密码：</span>
+                            <div class="f-fl item-ifo">
+                                <input type="password" maxlength="20"  class="txt03 f-r3 required" tabindex="4"
+                                       style="ime-mode:disabled;" onpaste="return  false" autocomplete="off"
+                                       data-valid="isNonEmpty||between:6-16||isRepeat:password_pass"
+                                       data-error="密码不能为空||密码长度6-16位||两次密码输入不一致"
+                                       id="rePassword_pass" />
+                                <span class="ie8 icon-close close hide" style="right:55px"></span>
+                                <span class="showpwd" data-eye="rePassword"></span>
+                                <label class="icon-sucessfill blank hide"></label>
+                                <label class="focus">请再输入一遍上面的密码</label>
+                                <label class="focus valid"></label>
+                            </div>
+                        </div>
+
+                        <div class="item col-xs-12">
+                            <span class="intelligent-label f-fl">&nbsp;</span>
+                            <div class="f-fl item-ifo">
+
+                                <a href="javascript:;" class="btn btn-blue f-r3" style="width:110px;margin-left:15px;"id="btn_part2_pass">保存</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="passwordPart3 text-center" style="display:none">
+                        <h3>密码修改成功</h3>
+                        <p class="c-666 f-mt30 f-mb50">页面将在 <strong id="times_pass" class="f-size18">10</strong> 秒钟后，跳转到 <a href="login" class="c-blue">登录页面</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 
-<!--<div id="jia_footer">-->
-    <!--<div class="jia_foot_info">-->
-        <!--<div class="jia_foot_con">-->
-            <!--<p class="jia_foot_link">-->
-                <!--<a href="#" rel="nofollow" target="_blank">关于我们</a><span class="jia_split">|</span> <a href="#"-->
-                                                                                                       <!--target="_blank"-->
-                                                                                                       <!--rel="nofollow">联系我们</a><span-->
-                    <!--class="jia_split">|</span> <a href="#" target="_blank" rel="nofollow">媒体报道</a><span-->
-                    <!--class="jia_split">|</span> <a href="#" target="_blank" rel="nofollow">法律声明</a><span-->
-                    <!--class="jia_split">|</span> <a href="javascript:;/help/0002.html" target="_blank"-->
-                                                  <!--rel="nofollow">企业文化</a><span class="jia_split">|</span> <a-->
-                    <!--href="javascript:;/link.html" target="_blank" rel="nofollow">友情链接</a><span-->
-                    <!--class="jia_split">|</span> <a href="javascript:;/jmtg/index.html" target="_blank" rel="nofollow">加盟齐家</a><span-->
-                    <!--class="jia_split">|</span> <a href="javascript:;/zhaoshang/" tjjj="sjrz.2" target="_blank"-->
-                                                  <!--rel="nofollow">入驻齐家</a><span class="jia_split">|</span> <a-->
-                    <!--href="javascript:;/help/0055.html" target="_blank" rel="nofollow">诚聘英才</a><span-->
-                    <!--class="jia_split">|</span> <a href="javascript:;/help/0033.html" target="_blank">网站地图</a><span-->
-                    <!--class="jia_split">|</span> <a href="javascript:;/app/" rel="nofollow" target="_blank">手机齐家</a><span-->
-                    <!--class="jia_split">|</span> <a href="#" target="_blank" rel="nofollow">钱包</a><span class="jia_split">|</span>-->
-                <!--<a href="javascript:;/help/" tjjj="bottom.link.help">帮助中心</a><span class="jia_split">|</span> <a-->
-                    <!--href="javascript:;" class="jia_foot_open">更多<i></i></a>-->
-            <!--</p>-->
-            <!--<p class="jia_foot_link footnone">-->
-                <!--<a href="#" target="_blank" tjjj="footer.bottom.1">找装修公司</a><span class="jia_split">|</span> <a href="#"-->
-                                                                                                                <!--target="_blank"-->
-                                                                                                                <!--tjjj="footer.bottom.2">买建材家居</a>-->
-            <!--</p>-->
-        <!--</div>-->
-        <!--<p>-->
-            <!--版权所有Copyright ? 2005-2016 www.17sucai.com All rights reserved-->
-        <!--</p>-->
-        <!--<p>-->
-            <!--沪ICP备xxxxxx号 沪B2-xxxx 组织机构代码证：xxxxx—1-->
-        <!--</p>-->
-        <!--<p>-->
-            <!--中国互联网协会信用评价中心网信认证 网信编码:xxxxxx1-->
-        <!--</p>-->
 
-        <!--<p>-->
-            <!--<a href="javascript:;">-->
-                <!--<img src="images/gov-inco.jpg" border="0" width="40" height="44">-->
-            <!--</a>-->
-            <!--<a href="javascript:;/315/" target="_blank" style="margin-left:15px;">-->
-                <!--<img src="images/315.gif" border="0">-->
-            <!--</a>-->
-            <!--<a style="margin-left:15px;" target="_blank" href="javascript:;">-->
-                <!--<img border="0" src="images/jb.jpg">-->
-            <!--</a>-->
-        <!--</p>-->
-    <!--</div>-->
-<!--</div>-->
+<div id="registerPage">
 
-<link rel='stylesheet' href="../../../statics/css_wz/login.css" th:href="@{/css_wz/login.css}" type='text/css'></link>
+    <div class="login-box f-mt10 f-pb50">
+        <div class="main bgf">
+            <div class="reg-box-pan display-inline">
+                <div class="step">
+                    <ul>
+                        <li class="col-xs-4 on">
+                            <span class="num"><em class="f-r5"></em><i>1</i></span>
+                            <span class="line_bg lbg-r"></span>
+                            <p class="lbg-txt">填写账户信息</p>
+                        </li>
+                        <li class="col-xs-4">
+                            <span class="num"><em class="f-r5"></em><i>2</i></span>
+                            <span class="line_bg lbg-l"></span>
+                            <span class="line_bg lbg-r"></span>
+                            <p class="lbg-txt">验证账户信息</p>
+                        </li>
+                        <li class="col-xs-4">
+                            <span class="num"><em class="f-r5"></em><i>3</i></span>
+                            <span class="line_bg lbg-l"></span>
+                            <p class="lbg-txt">注册成功</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="reg-box" id="verifyCheck" style="margin-top:20px;">
+                    <div class="part1">
+                        <div class="item col-xs-12">
+                            <span class="intelligent-label f-fl"><b class="ftx04">*</b>用户名：</span>
+                            <div class="f-fl item-ifo">
+                                <input type="text" maxlength="20" class="txt03 f-r3 required" tabindex="1" data-valid="isNonEmpty||between:3-20||isUname"
+                                       data-error="用户名不能为空||用户名长度3-20位||只能输入中文、字母、数字、下划线，且以中文或字母开头" id="adminNo_reg" />                            <span class="ie8 icon-close close hide"></span>
+                                <label class="icon iconfont icon-xiaoxi3-copy blank hide"></label>
+                                <label class="focus"><span>3-20位，中文、字母、数字、下划线的组合，以中文或字母开头</span></label>
+                                <label class="focus valid"></label>
+                            </div>
+                        </div>
+                        <div class="item col-xs-12">
+                            <span class="intelligent-label f-fl"><b class="ftx04">*</b>手机号：</span>
+                            <div class="f-fl item-ifo">
+                                <input type="text" class="txt03 f-r3 required" keycodes="tel" tabindex="2"
+                                       data-valid="isNonEmpty||isPhone" data-error="手机号码不能为空||手机号码格式不正确"
+                                       maxlength="11" id="phone_reg" />
+                                <span class="ie8 icon-close close hide"></span>
+                                <label class="icon iconfont icon-xiaoxi3-copy blank hide"></label>
+                                <label class="focus">请填写11位有效的手机号码</label>
+                                <label class="focus valid"></label>
+                            </div>
+                        </div>
+                        <!--<div class="item col-xs-12" >
+                            <span class="intelligent-label f-fl"><b class="ftx04">*</b>验证码：</span>
+                            <div class="f-fl item-ifo">
+                                <input type="text" maxlength="4" class="txt03 f-r3 f-fl required" tabindex="4"
+                                       style="width:150px"   id="randCode" data-valid="isNonEmpty||isInt"
+                                       placeholder="验证码是4位数"
+                                       data-error="验证码不能为空" />
 
-<script type="text/javascript" src="../../../statics/js/jquery/jquery-1.11.1.min.js" th:src="@{/js/jquery/jquery-1.11.1.min.js}" > </script>
-<script type="text/javascript" src="../../../statics/js/js_view/framework/login.js" th:src="@{/js/js_view/framework/login.js}" > </script>
+                                <a id='hqyzm_reg' href="javascript:;"  class="btn btn-gray" > 获取验证码</a>
+                                <span class="ie8 icon-close close hide"></span>
+                                <label id="yzm_info_reg"><i class="icon iconfont icon-BAI-fuxuankuangs "> </i>
+                                    校验码短信已发送到你的手机上，有效时间为10分钟，请及时查收</label>
 
+                                <label class="icon iconfont icon-xiaoxi3-copy blank hide"></label>
+                                <label class="focus">请点击获取验证码</label>
+                                <label class="focus valid hidden" style="left:370px">验证码不正确</label>
+
+                            </div>
+                        </div>
+-->
+                        <div class="item col-xs-12">
+                            <span class="intelligent-label f-fl"><b class="ftx04">*</b>验证码：</span>
+                            <div class="f-fl item-ifo">
+                                <input type="text" maxlength="6" id="verifyNo" class="txt03 f-r3 f-fl required" tabindex="4" style="width:167px"
+                                       data-valid="isNonEmpty||isInt"
+                                       placeholder="验证码是6位数"
+                                       data-error="验证码不能为空||请输入6位数字验证码" />
+                                <span class="btn btn-gray f-r3 f-ml5 f-size13" id="time_box" disabled style="width:97px;display:none;">发送验证码</span>
+                                <span class="btn btn-gray f-r3 f-ml5 f-size13" id="verifyYz" style="width:97px;">发送验证码</span>
+                                <span class="ie8 icon-close close hide" style="right:130px"></span>
+                                <label class="icon iconfont icon-xiaoxi3-copy blank hide"></label>
+                                <label id='yzm_info_reg' >
+                                    <!--<i class="icon iconfont icon-BAI-fuxuankuangs"> </i>-->
+                                    <span>校验码已发送到您的手机上,有效时间为5分钟!!!</span>
+                                </label>
+                                <label class="focus valid"></label>
+                            </div>
+                        </div>
+                        <div class="item col-xs-12">
+                            <span class="intelligent-label f-fl"><b class="ftx04">*</b>密码：</span>
+                            <div class="f-fl item-ifo">
+                                <input type="password" id="password_reg" maxlength="20" class="txt03 f-r3 required" tabindex="3" style="ime-mode:disabled;" onpaste="return  false" autocomplete="off" data-valid="isNonEmpty||between:6-20||level:2" data-error="密码不能为空||密码长度6-20位||该密码太简单，有被盗风险，建议字母+数字的组合" />
+                                <span class="ie8 icon-close close hide" style="right:55px"></span>
+                                <span class="showpwd" data-eye="password"></span>
+                                <label class="icon-sucessfill blank hide"></label>
+                                <label class="focus">6-20位英文（区分大小写）、数字、字符的组合</label>
+                                <label class="focus valid"></label>
+                                <span class="clearfix"></span>
+                                <label class="strength">
+                                    <span class="f-fl f-size12">安全程度：</span>
+                                    <b><i>弱</i><i>中</i><i>强</i></b>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="item col-xs-12">
+                            <span class="intelligent-label f-fl"><b class="ftx04">*</b>确认密码：</span>
+                            <div class="f-fl item-ifo">
+                                <input type="password" maxlength="20" class="txt03 f-r3 required" tabindex="4" style="ime-mode:disabled;" onpaste="return  false" autocomplete="off" data-valid="isNonEmpty||between:6-16||isRepeat:password_reg" data-error="密码不能为空||密码长度6-16位||两次密码输入不一致"
+                                       id="rePassword" />
+                                <span class="ie8 icon-close close hide" style="right:55px"></span>
+                                <span class="showpwd" data-eye="rePassword"></span>
+                                <label class="icon-sucessfill blank hide"></label>
+                                <label class="focus">请再输入一遍上面的密码</label>
+                                <label class="focus valid"></label>
+                            </div>
+                        </div>
+
+                        <div class="item col-xs-12" style="height:auto">
+                            <span class="intelligent-label f-fl">&nbsp;</span>
+                            <p class="f-size14 required"  data-valid="isChecked" data-error="请先同意条款">
+                                <input type="checkbox"  />
+                                <a href="javascript:showoutc();" class="f-ml5">我已阅读并同意条款</a>
+                            </p>
+                            <label class="focus valid"></label>
+                        </div>
+                        <div class="item col-xs-12">
+                            <span class="intelligent-label f-fl">&nbsp;</span>
+                            <div class="f-fl item-ifo">
+                                <a href="javascript:;" class="btn btn-blue f-r3" id="btn_part1">下一步</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="part2" style="display:none">-->
+                        <!---->
+                        <!--<div class="alert alert-info" style="width:700px">短信已发送至您手机，请输入短信中的验证码，确保您的手机号真实有效。</div>-->
+                        <!--<div class="item col-xs-12 f-mb10" style="height:auto">-->
+                            <!--<span class="intelligent-label f-fl">手机号：</span>-->
+                            <!--<div class="f-fl item-ifo c-blue">-->
+                                <!--15824450934-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="item col-xs-12">-->
+                            <!--<span class="intelligent-label f-fl"><b class="ftx04">*</b>验证码：</span>-->
+                            <!--<div class="f-fl item-ifo">-->
+                                <!--<input type="text" maxlength="6" id="verifyNo" class="txt03 f-r3 f-fl required" tabindex="4" style="width:167px" data-valid="isNonEmpty||isInt" data-error="验证码不能为空||请输入6位数字验证码" />-->
+                                <!--<span class="btn btn-gray f-r3 f-ml5 f-size13" id="time_box" disabled style="width:97px;display:none;">发送验证码</span>-->
+                                <!--<span class="btn btn-gray f-r3 f-ml5 f-size13" id="verifyYz" style="width:97px;">发送验证码</span>-->
+                                <!--<span class="ie8 icon-close close hide" style="right:130px"></span>-->
+                                <!--<label class="icon-sucessfill blank hide"></label>-->
+                                <!--<label class="focus"><span>请查收手机短信，并填写短信中的验证码（此验证码3分钟内有效）</span></label>-->
+                                <!--<label class="focus valid"></label>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="item col-xs-12">-->
+                            <!--<span class="intelligent-label f-fl">&nbsp;</span>-->
+                            <!--<div class="f-fl item-ifo">-->
+                                <!--<a href="javascript:;" class="btn btn-blue f-r3" id="btn_part2">注册</a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="part3" style="display:none">
+                        <div class="item col-xs-12">
+                            <span class="intelligent-label f-fl"><!--<b class="ftx04">*</b>-->真实姓名：</span>
+                            <div class="f-fl item-ifo">
+                                <input type="text" maxlength="10" class="txt03 f-r3 required" tabindex="1"
+                                       data-valid="between:2-10||isZh" data-error="真实姓名长度2-10位||只能输入中文" id="realName_reg" />
+                                <span class="ie8 icon-close close hide"></span>
+                                <label class="icon iconfont icon-xiaoxi3-copy blank hide"></label>
+                                <label class="focus">2-10位，中文真实姓名</label>
+                                <label class="focus valid"></label>
+                            </div>
+                        </div>
+                        <div class="item col-xs-12">
+                            <span class="intelligent-label f-fl"><!--<b class="ftx04">*</b>-->身份证号：</span>
+                            <div class="f-fl item-ifo">
+                                <input type="text" class="txt03 f-r3 required" tabindex="2" data-valid="isCard" data-error="身份证号码格式不正确" maxlength="18"
+                                       id="sfz_id" />
+                                <span class="ie8 icon-close close hide"></span>
+                                <label class="icon iconfont icon-xiaoxi3-copy blank hide"></label>
+                                <label class="focus">请填写18位有效的手机号码</label>
+                                <label class="focus valid"></label>
+                            </div>
+                        </div>
+                        <div class="item col-xs-12">
+                            <span class="intelligent-label f-fl">&nbsp;</span>
+                            <div class="f-fl item-ifo">
+                                <a href="javascript:;" class="btn btn-blue f-r3" style="width:110px;margin-left:15px;" id="btn_part2">上一步</a>
+                                <a href="javascript:;" class="btn btn-blue f-r3" style="width:110px;margin-left:15px;"id="btn_part3">完成</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="part4 text-center" style="display:none">
+                        <h3>恭喜cz82465，您已注册成功，现在开始您的之旅吧！</h3>
+                        <p class="c-666 f-mt30 f-mb50">页面将在 <strong id="times" class="f-size18">10</strong> 秒钟后，跳转到 <a href="login" class="c-blue">登录页面</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-sPopBg" style="z-index:998;"></div>
+    <div class="m-sPopCon regcon">
+        <div class="m-sPopTitle"><strong>服务协议条款</strong><b id="sPopClose" class="m-sPopClose" onClick="closeClause()">×</b></div>
+        <div class="apply_up_content">
+    	<pre class="f-r0">
+		<strong>同意以下服务条款，提交注册信息</strong>
+        </pre>
+        </div>
+        <center><a class="btn btn-blue btn-lg f-size12 b-b0 b-l0 b-t0 b-r0 f-pl50 f-pr50 f-r3" href="javascript:closeClause();">已阅读并同意此条款</a></center>
+    </div>
+
+</div>
+
+
+
+
+</div>
 
 
 

@@ -31,7 +31,10 @@ public class WzCons {
 	//public static final int miracles_text_lenght = 31;
 	public static final boolean isAllSheet_miracles_text = true;
 
-	private static String sourceOfMachine = null;
+	public static String sourceOfMachine = null;
+
+	// 上传文件路径
+	public static String UPLOADPATH = "/Users/wenzixia/Downloads/tempUpload/";
 
 
 	public static void setsourceOfMachine(String sourceOfMachine2){

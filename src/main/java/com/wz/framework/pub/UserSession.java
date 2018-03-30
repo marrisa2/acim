@@ -1,8 +1,9 @@
 package com.wz.framework.pub;
 
 public class UserSession {
-    private Long ids_user;
+    private long ids_user;
     private String name;
+    private String mobile;
     private String data;
     private String time;
     private String ipAddr;
@@ -22,9 +23,20 @@ public class UserSession {
     public Long getIds_user() {
         return ids_user;
     }
-    public void setIds_user(Long ids_user) {
+
+
+    public void setIds_user(long ids_user) {
         this.ids_user = ids_user;
     }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
     public String getName() {
         return name;
     }

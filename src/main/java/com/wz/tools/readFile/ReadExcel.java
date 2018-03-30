@@ -95,9 +95,9 @@ public class ReadExcel {
 		}
 		//String s = null;
 		
-		if(sheetIndexs==null || sheetIndexs.length==0){
-			//return null; 
-		}
+//		if(sheetIndexs==null || sheetIndexs.length==0){
+//			//return null;
+//		}
 		int sheetIndexs_size=  1;//sheetIndexs.length;
 		Map<String,List<Map<String,String>>> sheetMap  = new HashMap<String,List<Map<String,String>>>();
 				//List<String> list = new ArrayList<String>();
@@ -144,7 +144,7 @@ public class ReadExcel {
 				if(isAll ==true){
 					sheet = (Sheet) wb.getSheetAt(i);
 				}else{
-					sheet = (Sheet) wb.getSheetAt(sheetIndexs[i]);
+					//sheet = (Sheet) wb.getSheetAt(sheetIndexs[i]);
 				}
 				Iterator<Row> rows = sheet.iterator();// sheet.rowIterator();
 				String sheetName= sheet.getSheetName();
@@ -190,6 +190,8 @@ public class ReadExcel {
 				sheetMap.put(sheetName, mapList);
 				System.out.print("" + sheetMap.size());
 			}
+
+			System.out.print(sheetMap.size() + "dddd");
 			return sheetMap;
 		} catch (IOException ex) {
 			ex.printStackTrace();

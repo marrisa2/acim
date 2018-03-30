@@ -75,7 +75,7 @@ http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
     </tx:advice>
     
     <aop:config>
-        <aop:pointcut id="transactionPointcut" expression="execution(* com.wz.module.*.service.impl.*.*(..) )"/>
+        <aop:pointcut id="transactionPointcut" expression="execution(* com.wz.*.*.service.impl.*.*(..) )"/>
         <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice"/>
     </aop:config>
     <!-- 启用注解方式2：开启AOP事务方式 end-->

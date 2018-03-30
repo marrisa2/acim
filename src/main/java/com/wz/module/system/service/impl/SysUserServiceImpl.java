@@ -58,7 +58,17 @@ public class SysUserServiceImpl implements SysUserService {
 	public SysUser findBySysUserLoginName(String sysUserLoginName) {
 		return sysUserDao.findBySysUserLoginName(sysUserLoginName);
 	}
-	
+
+	@Override
+	public SysUser findBySysUserMobile(String sysUserMobile) {
+		return sysUserDao.findBySysUserMobile(sysUserMobile);
+	}
+
+	@Override
+	public SysUser findBySysUserEmail(String sysUserEmail) {
+		return sysUserDao.findBySysUserEmail(sysUserEmail);
+	}
+
 	@Override
 	public List<SysUser> findDistinctSysUserBySysUserLoginNameOrSysUserId(String sysUserLoginName, Long sysUserId) {
 		return sysUserDao.findDistinctSysUserBySysUserLoginNameOrSysUserId(sysUserLoginName, sysUserId);

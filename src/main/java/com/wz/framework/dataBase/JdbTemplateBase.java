@@ -4,10 +4,8 @@ import com.wz.tools.WzCons;
 import com.wz.tools.readFile.ReadFiles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.ApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import java.util.Map;
 import java.util.List;
